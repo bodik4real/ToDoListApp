@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 
 @Component({
@@ -9,40 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class TaskListComponent{
   tasks: string[] = new Array();
 
-  constructor() {
+  constructor(private dataService: DataService) {
     console.log("taskList class ran");
-  
    }
-
-  AddTask(task)
-  {
-    console.log(this.tasks);
-    this.tasks.push(task);
-    return false;
-  }
-
-  DeleteTask(task)
-  {
-    for(let i = 0; i< this.tasks.length; i++)
-    {
-      if(this.tasks[i] == task)
-      {
-        this.tasks.splice(i,1);
-      }
-    }
-    return false;
-  }
-
-  EditTask(task)
-  {
-    for (let i = 0; i<this.tasks.length; i++)
-    {
-      if(this.tasks[i] == task)
-      {
-        task[i] = task;
-      }
-    }
-    return false;
-  }
-
 }
+
+ 

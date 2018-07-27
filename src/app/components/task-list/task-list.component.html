@@ -1,11 +1,11 @@
-<div id="background" class="global">
+
 <div class="row">
   <div class="col-lg-3 col-lg-offset-4">
     <form (submit) = "AddTask(task.value)">
       <div class="input-group">
-        <div *ngFor="let task of tasks; let i = index">
-        <input type="text" name="task" [(ngModel)]="task-list.tasks[i].value" #task="ngModel" class="form-control" required minlength="1"  #task>
-      </div>
+        
+        <input type="text" name="task"  class="form-control" required minlength="1"  #task>
+
           <span class="input-group-btn">
             <button class="btn btn-success" type="button" (click)="AddTask(task.value)">Add</button>
           </span>
@@ -20,6 +20,5 @@
         </ul>
     </form>
   </div>
-</div>
 </div>
 

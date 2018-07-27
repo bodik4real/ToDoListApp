@@ -1,0 +1,15 @@
+<h1></h1>
+<form>
+<div>
+<label for="name">Name: </label><br>
+<input type="text" #name>
+</div>
+<div>
+  <label for="password">Password: </label><br>
+  <input type="password" #password>
+</div>
+<br>
+<button type="button" (click)="isLogin(name.value, password.value)">GO</button>
+</form>
+
+
