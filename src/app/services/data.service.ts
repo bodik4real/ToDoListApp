@@ -10,7 +10,7 @@ export class DataService {
 
     testTaskList : string[];
 
-  constructor( ) { 
+  constructor(private router: Router ) { 
     this.testTaskList = ['feffw', 'ffwfw','fwf'];
     var testUser = new User("TestName", "TestSurName","password", '28/05/2011 12:05', this.testTaskList);
     localStorage.setItem('currentUserLogin',JSON.stringify(testUser));

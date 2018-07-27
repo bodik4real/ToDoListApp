@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-
+import { FormGroup, FormBuilder, Validators, FormControl } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-task-list',
@@ -9,8 +9,18 @@ import { DataService } from '../../services/data.service';
 })
 export class TaskListComponent{
   tasks: string[] = new Array();
+  taskForm: FormGroup = new FormGroup({
+    task: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(30)
+    ])
+  });
 
-  constructor(private dataService: DataService) {
+  getTask()
+  {}
+
+  constructor(private dataService: DataService, private fb: FormBuilder ) {
     console.log("taskList class ran");
    }
 }

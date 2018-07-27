@@ -4,6 +4,7 @@ import {User} from '../../models/User';
 import { Router } from '@angular/router';
 import {AppRoutingModule} from './../../app-routing.module';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,9 +12,12 @@ import {AppRoutingModule} from './../../app-routing.module';
 })
 export class LoginComponent{
 
-  constructor(private dataService: DataService, private router: Router ) {
+
+  constructor(private dataService: DataService, private router: Router) {
 
    }
+
+
   isLogin(name, password)
   {
     if(this.dataService.isLogin(name, password))

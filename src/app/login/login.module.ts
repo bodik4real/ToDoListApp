@@ -8,7 +8,6 @@ import { RouterModule } from '../../../node_modules/@angular/router';
   imports: [
     CommonModule,
     AppRoutingModule,
-    RouterModule
   ],
   declarations: [],
   providers: [DataService]
