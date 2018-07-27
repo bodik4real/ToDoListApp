@@ -1,0 +1,12 @@
+#background
+{
+    background: -webkit-linear-gradient(-45deg, rgba(104,126,8,1) 0%,rgba(223,241,21,1) 30%,rgba(223,241,21,1) 65%,rgba(223,241,21,0) 74%,rgba(223,241,21,0) 80%,rgba(223,241,21,0.12) 81%,rgba(223,241,21,0.7) 86%); /* Chrome10-25,Safari5.1-6 */
+    height: 100%;
+}
+.global{
+    margin-bottom: 200px;
+}
+.input-group {
+    text-align:center;
+    margin-top: 40vh;
+}
