@@ -1,15 +1,15 @@
 <h1></h1>
-<form >
-<div>
-<label for="name">Name: </label><br>
-<input type="text" placeholder="name"  #name>
-</div>
-<div>
-  <label for="password">Password: </label><br>
-  <input type="password" placeholder="password"  #password>
-</div>
-<br>
-<button type="button" class="btn btn-info" (click)="isLogin(name.value, password.value)">GO</button>
+<form>
+  <div>
+    <label for="name">Name: </label>
+    <br>
+    <input type="text" placeholder="name" #name>
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <br>
+    <input type="password" placeholder="password" #password>
+  </div>
+  <br>
+  <button type="button" class="btn btn-info" (click)="login(name.value, password.value)">GO</button>
 </form>
-
-

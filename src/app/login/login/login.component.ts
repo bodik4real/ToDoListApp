@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import {User} from '../../models/User';
+import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
-import {AppRoutingModule} from './../../app-routing.module';
+import { AppRoutingModule } from '../../app-routing.module';
 
 
 @Component({
@@ -10,25 +9,16 @@ import {AppRoutingModule} from './../../app-routing.module';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent {
 
+  constructor(private userDataService: UserDataService, private router: Router) { }
 
-  constructor(private dataService: DataService, private router: Router) {
-
-   }
-
-
-  isLogin(name, password)
-  {
-    if(this.dataService.isLogin(name, password))
-    {
+  Login(name: string, password: string) {
+    if (this.userDataService.login(name, password)) {
       this.router.navigate(['/taskList']);
-      //location.href = 'http://localhost:4200/dashboard'; 
-     }
-    else
-    {
-       this.router.navigate(['/']);    
-      // location.href = 'http://localhost:4200/login';    
+    }
+    else {
+      this.router.navigate(['/login']);
     }
   }
 }

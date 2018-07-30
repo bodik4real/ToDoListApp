@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { FormGroup, FormBuilder, Validators, FormControl } from '../../../../node_modules/@angular/forms';
+import { TaskDataService } from '../../services/task-data.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent{
+export class TaskListComponent {
   tasks: string[] = new Array();
   taskForm: FormGroup = new FormGroup({
     task: new FormControl('', [
@@ -17,12 +18,14 @@ export class TaskListComponent{
     ])
   });
 
-  getTask()
-  {}
-
-  constructor(private dataService: DataService, private fb: FormBuilder ) {
+  constructor(private taskDataService: TaskDataService, private fb: FormBuilder) {
     console.log("taskList class ran");
-   }
+
+  }
+
+  public addTask(task: string): void {
+    this.taskDataService.addTask(task);
+  }
 }
 
- 
+
