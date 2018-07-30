@@ -35,7 +35,7 @@ export class TaskDataService {
   public editTask(task: string): boolean {
     for (let i = 0; i < this.getUser().tasks.length; i++) {
       if (this.getUser().tasks[i] == task) {
-        tasks[i] = task;
+        // func
       }
     }
     return false;
