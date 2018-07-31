@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Task } from '../models/Task';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-task-list',
@@ -22,6 +24,7 @@ export class TaskListComponent {
   });
 
   constructor(private taskDataService: TaskDataService, private fb: FormBuilder) { }
+
 
   public addTask(task: string): void {
     this.taskDataService.addTask(task);
