@@ -6,11 +6,10 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class TaskListGuard implements CanActivate
 {
-    constructor(private userDataService: UserDataService) {
+    constructor(private userDataService: UserDataService) {}
 
-    }
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean{
-      
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> | boolean
+    {
         if(this.userDataService.isAuth())
         {
             console.log(this.userDataService.isAuth());
@@ -18,7 +17,7 @@ export class TaskListGuard implements CanActivate
         }
         else
         {
-            this.userDataService.RedirectToLogin();             
+            this.userDataService.redirectToLogin();             
             return false;   
         }
     }

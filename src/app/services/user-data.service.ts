@@ -13,25 +13,18 @@ export class UserDataService {
   testTaskList: string[];
 
   constructor(private router: Router) {
-   /* this.testTaskList = ['feffw', 'ffwfw', 'fwf'];
-    var date = moment("2013-03-24")
-    var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
-    localStorage.setItem('currentUserLogin', JSON.stringify(testUser));*/
+     this.testTaskList = ['feffw', 'ffwfw', 'fwf'];
+     var date = moment("2013-03-24")
+     var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
+     localStorage.setItem('currentUserLogin', JSON.stringify(testUser));
   }
 
   public login(name: string, password: string): boolean {
-    if (this.isAuth) {
+    if (this.isAuth()) {
       let user = this.getUser();
       if (name === user.name && password === user.password) {
         console.log("user is loggined");
-        var lastLoginTime = user.lastLogin;
-        var currentDate = moment().format("DD-MM-YYYY");
-        if (currentDate > lastLoginTime) {
-          return false;
-        }
-        else {
-          return true;
-        }
+        return true;
       }
       else {
         console.log("user is not loggined!");
@@ -44,10 +37,15 @@ export class UserDataService {
 
   public isAuth(): boolean {
     var user = this.getUser();
+    var expectedDate = moment(user.lastLogin, "DD-MM-YYYY").add(1, 'days');
+    var now = moment();
+    var nowInCorrectFormat = moment(now, "DD-MM-YYYY");
     if (user == null) {
       return false;
     }
-    //get Last Login time 
+    if (nowInCorrectFormat > expectedDate) {
+      return false;
+    }
     return true;
   }
 

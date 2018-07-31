@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TaskDataService } from '../../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
@@ -18,10 +17,7 @@ export class TaskListComponent {
     ])
   });
 
-  constructor(private taskDataService: TaskDataService, private fb: FormBuilder) {
-    console.log("taskList class ran");
-
-  }
+  constructor(private taskDataService: TaskDataService, private fb: FormBuilder) {}
 
   public addTask(task: string): void {
     this.taskDataService.addTask(task);

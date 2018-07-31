@@ -9,7 +9,7 @@ import { LoginModule } from './login/login.module';
 import { TaskListModule } from './task-list/task-list.module';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TaskListGuard} from './task-list.guard';
+import { TaskListGuard } from './task-list.guard';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -27,8 +27,11 @@ import { map } from 'rxjs/operators';
   declarations: [
     AppComponent,
   ],
-  providers: [UserDataService,
-    TaskDataService, TaskListGuard],
+  providers: [
+    UserDataService,
+    TaskDataService,
+    TaskListGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

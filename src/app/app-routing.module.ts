@@ -10,7 +10,7 @@ import { TaskListGuard } from './task-list.guard';
 const routes: Routes = [
   { path: 'login',  component:LoginComponent  },
   { path: 'taskList',  component: TaskListComponent, canActivate:[TaskListGuard]  },
-  { path: '', redirectTo: '/login', pathMatch: 'full', canActivate:[TaskListGuard]  }
+  { path: '', redirectTo: '/taskList', pathMatch: 'full', canActivate:[TaskListGuard]  }
 ];
 
 @NgModule({
