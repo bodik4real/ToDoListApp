@@ -14,14 +14,16 @@
         Error: Min Length of task is 5 symbols!
       </div>
       <ul class="task-list-container">
-        <p>
-          <li *ngFor="let task of tasks; let i = index">{{i+1}}:{{task}}
-            <div class="buttons-group-visability">
-              <button class="btn btn-warning" type="button">Edit</button>
-              <button class="btn btn-danger" type="button">Delete</button>
-            </div>
-          </li>
-        </p>
+        <li *ngFor="let task of tasks; let i = index">{{i+1}}:{{task}}
+          <div class="buttons-group-visability">
+              <button class="btn btn-warning" type="button" (click)="show = !show">Edit</button>
+              <span *ngIf="show">
+                <input type="text" #newTask>
+                <button type="button" class="btn btn-primary" (click)="editTask(task.value, newTask.value)">Change task</button>
+              </span>
+            <button class="btn btn-danger" type="button" (click)="deleteTask(task)">Delete</button>
+          </div>
+        </li>
       </ul>
     </form>
   </div>

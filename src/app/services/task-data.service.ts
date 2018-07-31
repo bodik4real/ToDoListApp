@@ -32,14 +32,14 @@ export class TaskDataService {
     return false;
   }
 
-  public editTask(task: string): boolean {
+  public editTask(oldTask: string, newTask: string) {
     for (let i = 0; i < this.getUser().tasks.length; i++) {
-      if (this.getUser().tasks[i] == task) 
+      if (this.getUser().tasks[i] == oldTask) 
       {
-
+        this.getUser().tasks[i] = newTask;
       }
     }
-    return false;
+    return this.getUser().tasks;
   }
 }
 
