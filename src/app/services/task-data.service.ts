@@ -16,12 +16,11 @@ export class TaskDataService {
     return user;
   }
 
-  public addTask(task: string): boolean {
+  public addTask(task: string): void {
     console.log(this.getUser().tasks);
     var user = this.userDataService.getUser();
     user.tasks.push(task);
     localStorage.setItem('currentUserLogin', JSON.stringify(user));
-    return false;
   }
 
   public deleteTask(task: string): boolean {
@@ -33,12 +32,14 @@ export class TaskDataService {
     return false;
   }
 
-  public editTask(task: string): boolean {
+  public editTask(oldTask: string, newTask: string) {
     for (let i = 0; i < this.getUser().tasks.length; i++) {
-      if (this.getUser().tasks[i] == task) {
+      if (this.getUser().tasks[i] == oldTask) 
+      {
+        this.getUser().tasks[i] = newTask;
       }
     }
-    return false;
+    return this.getUser().tasks;
   }
 }
 
