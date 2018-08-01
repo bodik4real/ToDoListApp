@@ -4,13 +4,17 @@ import { User } from '../models/User';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
+<<<<<<< HEAD
 import { TaskItem } from '../models/TaskItem';
+=======
+>>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
 
+<<<<<<< HEAD
   private currentUserKey = 'currentUser';
   private dateFormat = "DD-MM-YYYY";
   testTaskList: Array<TaskItem>;
@@ -20,6 +24,15 @@ export class UserDataService {
      var date = moment("2013-03-24")
      var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
      localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
+=======
+  testTaskList: string[];
+
+  constructor(private router: Router) {
+     this.testTaskList = ['feffw', 'ffwfw', 'fwf'];
+     var date = moment("2013-03-24")
+     var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
+     localStorage.setItem('currentUserLogin', JSON.stringify(testUser));
+>>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
   }
 
   public login(name: string, password: string): boolean {
@@ -40,9 +53,15 @@ export class UserDataService {
 
   public isAuth(): boolean {
     var user = this.getUser();
+<<<<<<< HEAD
     var expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
     var now = moment();
     var nowInCorrectFormat = moment(now, this.dateFormat);
+=======
+    var expectedDate = moment(user.lastLogin, "DD-MM-YYYY").add(1, 'days');
+    var now = moment();
+    var nowInCorrectFormat = moment(now, "DD-MM-YYYY");
+>>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
     if (user == null) {
       return false;
     }
@@ -53,7 +72,11 @@ export class UserDataService {
   }
 
   public getUser(): User {
+<<<<<<< HEAD
     var user = JSON.parse(localStorage.getItem(this.currentUserKey));
+=======
+    var user = JSON.parse(localStorage.getItem('currentUserLogin'));
+>>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
     return user;
   }
 
@@ -64,9 +87,12 @@ export class UserDataService {
   public redirectToLogin() {
     this.router.navigate(['/login']);
   }
+<<<<<<< HEAD
 
   public saveUser(user: User)
   {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
   }
+=======
+>>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
 }
