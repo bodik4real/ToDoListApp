@@ -1,4 +1,4 @@
-export class Task {
+export class TaskItem {
     public id: number;
     public value: string
 

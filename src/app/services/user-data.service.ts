@@ -4,19 +4,22 @@ import { User } from '../models/User';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { TaskItem } from '../models/TaskItem';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
 
-  testTaskList: string[];
+  private currentUserKey = 'currentUser';
+  private dateFormat = "DD-MM-YYYY";
+  testTaskList: Array<TaskItem>;
 
   constructor(private router: Router) {
-     this.testTaskList = ['feffw', 'ffwfw', 'fwf'];
+     this.testTaskList = [new TaskItem(0,"fewfw")];
      var date = moment("2013-03-24")
      var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
-     localStorage.setItem('currentUserLogin', JSON.stringify(testUser));
+     localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
   }
 
   public login(name: string, password: string): boolean {
@@ -37,9 +40,9 @@ export class UserDataService {
 
   public isAuth(): boolean {
     var user = this.getUser();
-    var expectedDate = moment(user.lastLogin, "DD-MM-YYYY").add(1, 'days');
+    var expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
     var now = moment();
-    var nowInCorrectFormat = moment(now, "DD-MM-YYYY");
+    var nowInCorrectFormat = moment(now, this.dateFormat);
     if (user == null) {
       return false;
     }
@@ -50,7 +53,7 @@ export class UserDataService {
   }
 
   public getUser(): User {
-    var user = JSON.parse(localStorage.getItem('currentUserLogin'));
+    var user = JSON.parse(localStorage.getItem(this.currentUserKey));
     return user;
   }
 
@@ -60,5 +63,10 @@ export class UserDataService {
 
   public redirectToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  public saveUser(user: User)
+  {
+    localStorage.setItem(this.currentUserKey, JSON.stringify(user));
   }
 }
