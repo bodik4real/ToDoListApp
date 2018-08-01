@@ -48,12 +48,19 @@ export class TaskDataService {
     return user;
   }
 
+<<<<<<< HEAD
   public addTask(task: string): boolean {
+=======
+  public addTask(task: string): void {
+>>>>>>> 18db4d068a90e3c92485133af9c79bfbcba289aa
     console.log(this.getUser().tasks);
     var user = this.userDataService.getUser();
     user.tasks.push(task);
     localStorage.setItem('currentUserLogin', JSON.stringify(user));
+<<<<<<< HEAD
     return false;
+=======
+>>>>>>> 18db4d068a90e3c92485133af9c79bfbcba289aa
   }
 
   public deleteTask(task: string): boolean {
@@ -65,6 +72,7 @@ export class TaskDataService {
     return false;
   }
 
+<<<<<<< HEAD
   public editTask(task: string): boolean {
     for (let i = 0; i < this.getUser().tasks.length; i++) {
       if (this.getUser().tasks[i] == task) {
@@ -72,6 +80,16 @@ export class TaskDataService {
     }
     return false;
 >>>>>>> 040d39e032c2b9c6e0d7a0c581526b311f8c97f5
+=======
+  public editTask(oldTask: string, newTask: string) {
+    for (let i = 0; i < this.getUser().tasks.length; i++) {
+      if (this.getUser().tasks[i] == oldTask) 
+      {
+        this.getUser().tasks[i] = newTask;
+      }
+    }
+    return this.getUser().tasks;
+>>>>>>> 18db4d068a90e3c92485133af9c79bfbcba289aa
   }
 }
 
