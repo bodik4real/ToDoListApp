@@ -1,0 +1,12 @@
+li{
+    list-style-type: none;
+}
+
+.buttons-group-visibility {
+    display: none; 
+  }
+  
+  .buttons-group-visibility :hover{
+     display: inline-block;
+  }
+  
