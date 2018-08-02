@@ -1,0 +1,8 @@
+<li>
+  <input *ngIf="isTaskEditing" type="text" [(ngModel)]="task.value"><span *ngIf="!isTaskEditing">{{task.id}}:{{task.value}}</span>
+  <div class="buttons-group-visability">
+    <button *ngIf="isTaskEditing" type="button" class="btn btn-primary" (click)="editTask(task)">Ok</button>
+    <button *ngIf="!isTaskEditing" class="btn btn-warning" type="button" (click)="startEditing()">Edit</button>
+    <button class="btn btn-danger" type="button"  (click)="deleteTask(task.id)"  >Delete</button>
+  </div>
+</li>

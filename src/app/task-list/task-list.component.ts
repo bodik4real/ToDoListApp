@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Task } from '../models/Task';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { TaskItem } from '../models/TaskItem';
+import { TaskListItemComponent } from './task-list-item/task-list-item.component';
+import { UserDataService } from '../services/user-data.service';
+
 
 @Component({
   selector: 'app-task-list',
@@ -13,7 +14,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 export class TaskListComponent {
 
-  public tasks = new Array<string>();
+  public tasks = new Array<TaskItem>();
+  public IsHidden = true;
 
   public taskForm: FormGroup = new FormGroup({
     task: new FormControl('', [
@@ -23,26 +25,24 @@ export class TaskListComponent {
     ])
   });
 
-  constructor(private taskDataService: TaskDataService, private fb: FormBuilder) { }
+  constructor(private taskDataService: TaskDataService, private fb: FormBuilder, private userDataService: UserDataService) { }
 
-
-  public addTask(task: string): void {
+  public addTask(taskValue): void {
+    let task = new TaskItem(this.tasks.length, taskValue);
     this.taskDataService.addTask(task);
     this.tasks.push(task);
+    this.taskForm.reset();
   }
 
-  public deleteTask(task: string):void
-  {
-    this.taskDataService.deleteTask(task);
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i] == task) {
-        this.tasks.splice(i, 1);
-      }
+  public deleteTask(taskIndex: number): void {
+    this.taskDataService.deleteTask(taskIndex);
+    let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
+        this.tasks.splice(currentTaskIndex, 1);
+     // this.modalRef.hide();
     }
-  }
 
-  public editTask(oldTask:string, newTask:string)
-  {
-    this.tasks = this.taskDataService.editTask(oldTask, newTask);
+  public editTask(task: TaskItem) {
+    let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);
+    this.tasks[currentTaskIndex] = this.taskDataService.editTask(task);
   }
 }

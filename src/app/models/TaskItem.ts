@@ -1,6 +1,7 @@
-export class Task {
+export class TaskItem {
+
     public id: number;
-    public value: string
+    public value: string;
 
     constructor(id: number, value: string) {
         this.id = id;
