@@ -22,7 +22,6 @@ import { ModalModule } from 'ngx-bootstrap';
     BrowserModule,
     LoginModule,
     TaskListModule,
-    
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,

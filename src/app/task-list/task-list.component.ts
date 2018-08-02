@@ -27,7 +27,7 @@ export class TaskListComponent {
 
   constructor(private taskDataService: TaskDataService, private fb: FormBuilder, private userDataService: UserDataService) { }
 
-  public addTask(taskValue: string): void {
+  public addTask(taskValue): void {
     let task = new TaskItem(this.tasks.length, taskValue);
     this.taskDataService.addTask(task);
     this.tasks.push(task);
