@@ -17,10 +17,13 @@ export class UserDataService {
   private testTaskList: Array<TaskItem>;
 
   constructor(private router: Router) {
-    this.testTaskList = [new TaskItem(0, "fewfw")];
     var date = moment("2013-03-24")
-    var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
+    var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.generateTestTaskList());
     localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
+  }
+
+  public generateTestTaskList(): Array<TaskItem> {
+    return this.testTaskList = [new TaskItem(0, "fewfw")];
   }
 
   public login(name: string, password: string): boolean {
