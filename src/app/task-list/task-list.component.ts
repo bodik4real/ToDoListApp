@@ -2,9 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TaskItem } from '../models/TaskItem';
-import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { UserDataService } from '../services/user-data.service';
-
 
 @Component({
   selector: 'app-task-list',
@@ -27,7 +25,7 @@ export class TaskListComponent {
 
   constructor(private taskDataService: TaskDataService, private fb: FormBuilder, private userDataService: UserDataService) { }
 
-  public addTask(taskValue): void {
+  public addTask(taskValue: string): void {
     let task = new TaskItem(this.tasks.length, taskValue);
     this.taskDataService.addTask(task);
     this.tasks.push(task);
@@ -38,11 +36,11 @@ export class TaskListComponent {
     this.taskDataService.deleteTask(taskIndex);
     let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
         this.tasks.splice(currentTaskIndex, 1);
-     // this.modalRef.hide();
     }
 
   public editTask(task: TaskItem) {
     let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);
-    this.tasks[currentTaskIndex] = this.taskDataService.editTask(task);
+    this.taskDataService.editTask(task);
+    this.tasks[currentTaskIndex] = task;
   }
 }

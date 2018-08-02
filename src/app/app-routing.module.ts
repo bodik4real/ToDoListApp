@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login/login.component';
-import { TaskListComponent } from './task-list/task-list/task-list.component';
-import { LoginModule } from './login/login.module';
-import { TaskListModule } from './task-list/task-list.module';
+import { TaskListComponent } from './task-list/task-list.component';
 import { TaskListGuard } from './task-list.guard';
 
 const routes: Routes = [

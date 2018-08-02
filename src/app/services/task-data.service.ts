@@ -28,13 +28,15 @@ export class TaskDataService {
     }
   }
 
-  public editTask(editedTask: TaskItem): TaskItem {
+  public editTask(editedTask: TaskItem): void {
     let user = this.userDataService.getUser();
-    for (let i = 0; i < this.userDataService.getUser().tasks.length; i++) {
-      if (user.tasks[i].id === editedTask.id) {
-        user.tasks[i].value = editedTask.value;
+    if(user)
+    {
+      let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === editedTask.id);
+      if(currentTaskIndex)
+      {
+        user.tasks[currentTaskIndex] = editedTask;
         this.userDataService.saveUser(user);
-        return user.tasks[i];
       }
     }
   }

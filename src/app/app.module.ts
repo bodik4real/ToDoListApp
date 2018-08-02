@@ -7,14 +7,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { TaskListModule } from './task-list/task-list.module';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListGuard } from './task-list.guard';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ModalModule } from 'ngx-bootstrap';
-
-
 
 @NgModule({
   imports: [
@@ -37,4 +32,5 @@ import { ModalModule } from 'ngx-bootstrap';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

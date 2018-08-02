@@ -17,16 +17,15 @@ export class TaskListItemComponent {
   public editTask(task: TaskItem) {
     this.task = task;
     this.onTaskEdit.emit(this.task);
+    this.isTaskEditing = false;
   }
 
-  public deleteTask(taskNumber: number)
-  {
+  public deleteTask(taskNumber: number) {
     this.task.id = taskNumber;
     this.onTaskDelete.emit(this.task.id);
   }
 
-  public startEditing()
-  { 
-    this.isTaskEditing= !this.isTaskEditing;     
+  public startEditing() {
+    this.isTaskEditing = !this.isTaskEditing;
   }
 }
