@@ -10,8 +10,6 @@ export class TaskListItemComponent {
 
   public isTaskEditing: boolean;
 
-  constructor() {}
-
   @Input() task: TaskItem;
   @Output() onTaskEdit = new EventEmitter<TaskItem>();
   @Output() onTaskDelete = new EventEmitter<number>();

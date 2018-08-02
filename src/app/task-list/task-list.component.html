@@ -2,7 +2,7 @@
   <div class="col-lg-3 col-lg-offset-4">
     <form [formGroup]="taskForm" (submit)="addTask(task.value)">
       <div class="input-group">
-        <input type="text" name="task" formControlName="task" placeholder="Type Your Task Here" class="form-control" #task>
+        <input type="text" name="task" formControlName="task" placeholder="Type your task here" class="form-control" #task>
         <div *ngIf="task.invalid">
           <h3>Your task isn’t valid!</h3>
         </div>

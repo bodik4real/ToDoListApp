@@ -36,13 +36,10 @@ export class TaskListComponent {
 
   public deleteTask(taskIndex: number): void {
     this.taskDataService.deleteTask(taskIndex);
-    for (let i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].id === taskIndex) {
-        this.tasks.splice(i, 1);
-      }
+    let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
+        this.tasks.splice(currentTaskIndex, 1);
      // this.modalRef.hide();
     }
-  }
 
   public editTask(task: TaskItem) {
     let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);

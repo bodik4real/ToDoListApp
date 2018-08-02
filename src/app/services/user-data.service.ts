@@ -9,17 +9,18 @@ import { TaskItem } from '../models/TaskItem';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserDataService {
 
   private currentUserKey = 'currentUser';
   private dateFormat = "DD-MM-YYYY";
-  testTaskList: Array<TaskItem>;
+  private testTaskList: Array<TaskItem>;
 
   constructor(private router: Router) {
-     this.testTaskList = [new TaskItem(0,"fewfw")];
-     var date = moment("2013-03-24")
-     var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
-     localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
+    this.testTaskList = [new TaskItem(0, "fewfw")];
+    var date = moment("2013-03-24")
+    var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.testTaskList);
+    localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
   }
 
   public login(name: string, password: string): boolean {
@@ -40,7 +41,6 @@ export class UserDataService {
 
   public isAuth(): boolean {
     var user = this.getUser();
-
     var expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
     var now = moment();
     var nowInCorrectFormat = moment(now, this.dateFormat);
@@ -65,9 +65,8 @@ export class UserDataService {
   public redirectToLogin() {
     this.router.navigate(['/login']);
   }
-  
-  public saveUser(user: User)
-  {
+
+  public saveUser(user: User) {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
   }
 }

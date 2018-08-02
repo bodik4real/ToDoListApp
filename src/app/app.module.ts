@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListGuard } from './task-list.guard';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { ModalModule } from 'ngx-bootstrap';
 
 
@@ -27,7 +26,6 @@ import { ModalModule } from 'ngx-bootstrap';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ModalModule.forRoot()
-
   ],
   declarations: [
     AppComponent,
