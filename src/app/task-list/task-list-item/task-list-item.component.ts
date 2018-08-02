@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { TaskItem } from '../../models/TaskItem';
+import { BsModalRef } from '../../../../node_modules/ngx-bootstrap';
 
 @Component({
   selector: 'app-task-list-item',

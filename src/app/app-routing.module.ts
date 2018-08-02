@@ -6,15 +6,15 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskListGuard } from './task-list.guard';
 
 const routes: Routes = [
-  { path: 'login',  component:LoginComponent  },
-  { path: 'taskList',  component: TaskListComponent, canActivate:[TaskListGuard]  },
-  { path: '', redirectTo: '/taskList', pathMatch: 'full', canActivate:[TaskListGuard]  }
+  { path: 'login', component: LoginComponent },
+  { path: 'taskList', component: TaskListComponent, canActivate: [TaskListGuard] },
+  { path: '', redirectTo: '/taskList', pathMatch: 'full', canActivate: [TaskListGuard] }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes) 
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

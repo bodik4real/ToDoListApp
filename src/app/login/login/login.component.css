@@ -76,3 +76,12 @@
     display: block;
     margin-top: 10px;
 }
+
+.input-group {
+    text-align: center;
+    margin-top: 20vh;
+  }
+
+.buttons-space{
+    margin-left: 5px;
+}

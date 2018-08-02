@@ -2,11 +2,16 @@ li{
     list-style-type: none;
 }
 
-.buttons-group-visibility {
-    display: none; 
-  }
-  
-  .buttons-group-visibility :hover{
-     display: inline-block;
-  }
-  
+.space-between-items-and-input{
+    margin-top: 15px;
+}
+
+.set-left-margin{
+    margin-left: 15px;
+}
+
+.buttons-align{
+    float: left;
+    margin-right: 15px;
+}
+

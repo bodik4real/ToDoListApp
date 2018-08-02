@@ -1,8 +1,10 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TaskItem } from '../models/TaskItem';
 import { UserDataService } from '../services/user-data.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-task-list',
@@ -14,6 +16,7 @@ export class TaskListComponent {
 
   public tasks = new Array<TaskItem>();
   public IsHidden = true;
+  modalRef: BsModalRef;
 
   public taskForm: FormGroup = new FormGroup({
     task: new FormControl('', [
@@ -23,23 +26,34 @@ export class TaskListComponent {
     ])
   });
 
-  constructor(private taskDataService: TaskDataService, private fb: FormBuilder, private userDataService: UserDataService) { }
+  constructor(
+    private taskDataService: TaskDataService,
+    private fb: FormBuilder,
+    private userDataService: UserDataService,
+    private modalService: BsModalService) {
+
+  }
+
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
 
   public addTask(taskValue: string): void {
-    let task = new TaskItem(this.tasks.length, taskValue);
+    const task = new TaskItem(this.tasks.length, taskValue);
     this.taskDataService.addTask(task);
     this.tasks.push(task);
     this.taskForm.reset();
   }
 
-  public deleteTask(taskIndex: number): void {
+  public deleteTask(taskIndex: number, template): void {
+    this.openModal(template);
     this.taskDataService.deleteTask(taskIndex);
-    let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
-        this.tasks.splice(currentTaskIndex, 1);
-    }
+    const currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
+    this.tasks.splice(currentTaskIndex, 1);
+  }
 
   public editTask(task: TaskItem) {
-    let currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);
+    const currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);
     this.taskDataService.editTask(task);
     this.tasks[currentTaskIndex] = task;
   }
