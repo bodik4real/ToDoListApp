@@ -19,7 +19,10 @@ import { TaskListItemComponent } from './task-list-item/task-list-item.component
     TaskListComponent,
     TaskListItemComponent
   ],
-  exports: [TaskListComponent],
+  exports: [
+    TaskListComponent,
+    TaskListItemComponent
+  ],
   providers: [TaskDataService, UserDataService]
 })
 export class TaskListModule { }

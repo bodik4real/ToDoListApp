@@ -1,8 +1,14 @@
-<li>
-  <input *ngIf="isTaskEditing" type="text" [(ngModel)]="task.value"><span *ngIf="!isTaskEditing">{{task.id}}:{{task.value}}</span>
-  <div class="buttons-group-visability">
-    <button *ngIf="isTaskEditing" type="button" class="btn btn-primary" (click)="editTask(task)">Ok</button>
-    <button *ngIf="!isTaskEditing" class="btn btn-warning" type="button" (click)="startEditing()">Edit</button>
-    <button class="btn btn-danger" type="button"  (click)="deleteTask(task.id)"  >Delete</button>
-  </div>
-</li>
+<div class="row space-between-items-and-input set-left-margin">
+  <input *ngIf="isTaskEditing" class="form-control" type="text" [(ngModel)]="task.value">
+  <div class="buttons-align" *ngIf="!isTaskEditing">{{task.id}}:{{task.value}}</div>
+  <button *ngIf="isTaskEditing" type="button" class="btn btn-primary btn-xs" (click)="editTask(task)">Save</button>
+  <button *ngIf="!isTaskEditing" class="btn btn-warning btn-xs" type="button" (click)="startEditing()">Edit</button>
+  <button class="btn btn-danger btn-xs set-left-margin" type="button" (click)="openModal(template)">Delete</button>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="deleteTask(task.id)">Yes</button>
+      <button type="button" class="btn btn-primary set-left-margin" (click)="decline()">No</button>
+    </div>
+  </ng-template>
+</div>

@@ -8,14 +8,6 @@
   margin-top: 40vh;
 }
 
-.buttons-group-visability {
-  display: none; 
-}
-
-.buttons-group-visability :hover{
-   display: inline-block;
-}
-
-.task-list-container li:hover .buttons-group-visability{
+.task-list-container li:hover .buttons-group-visibility{
   display: inline-block;
 }

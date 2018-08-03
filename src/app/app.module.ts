@@ -7,14 +7,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { TaskListModule } from './task-list/task-list.module';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListGuard } from './task-list.guard';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ModalModule } from 'ngx-bootstrap';
-
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -29,6 +25,7 @@ import { ModalModule } from 'ngx-bootstrap';
   ],
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   providers: [
     UserDataService,
@@ -37,4 +34,5 @@ import { ModalModule } from 'ngx-bootstrap';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

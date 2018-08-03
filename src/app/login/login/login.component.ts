@@ -15,8 +15,7 @@ export class LoginComponent {
   public login(name: string, password: string) {
     if (this.userDataService.login(name, password)) {
       this.router.navigate(['/taskList']);
-    }
-    else {
+    } else {
       this.router.navigate(['/login']);
     }
   }

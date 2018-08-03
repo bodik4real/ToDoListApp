@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskItem } from '../../models/TaskItem';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-task-list-item',
@@ -9,24 +10,34 @@ import { TaskItem } from '../../models/TaskItem';
 export class TaskListItemComponent {
 
   public isTaskEditing: boolean;
+  public modalRef: BsModalRef;
 
   @Input() task: TaskItem;
-  @Output() onTaskEdit = new EventEmitter<TaskItem>();
-  @Output() onTaskDelete = new EventEmitter<number>();
+  @Output() taskEdit = new EventEmitter<TaskItem>();
+  @Output() taskDelete = new EventEmitter<number>();
+  @Output() taskOpenModel = new EventEmitter<any>();
+
+  constructor( private modalService: BsModalService){
+    
+  }
 
   public editTask(task: TaskItem) {
     this.task = task;
-    this.onTaskEdit.emit(this.task);
+    this.taskEdit.emit(this.task);
+    this.isTaskEditing = false;
   }
 
-  public deleteTask(taskNumber: number)
-  {
+  public deleteTask(taskNumber: number) {
     this.task.id = taskNumber;
-    this.onTaskDelete.emit(this.task.id);
+    this.taskDelete.emit(this.task.id);
+       this.modalRef.hide();
   }
 
-  public startEditing()
-  { 
-    this.isTaskEditing= !this.isTaskEditing;     
+  public startEditing() {
+    this.isTaskEditing = !this.isTaskEditing;
+  }
+
+  public decline(): void {
+    this.modalRef.hide();
   }
 }

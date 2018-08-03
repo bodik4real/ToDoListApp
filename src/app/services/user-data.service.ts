@@ -13,40 +13,38 @@ import { TaskItem } from '../models/TaskItem';
 export class UserDataService {
 
   private currentUserKey = 'currentUser';
-  private dateFormat = "DD-MM-YYYY";
+  private dateFormat = 'DD-MM-YYYY';
   private testTaskList: Array<TaskItem>;
 
   constructor(private router: Router) {
-    var date = moment("2013-03-24")
-    var testUser = new User("TestName", "TestSurName", "password", date.toString(), this.generateTestTaskList());
+    const date = moment('2013-03-24');
+    const testUser = new User('TestName', 'TestSurName', 'password', date.toString(), this.generateTestTaskList());
     localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
   }
 
   public generateTestTaskList(): Array<TaskItem> {
-    return this.testTaskList = [new TaskItem(0, "fewfw")];
+    return this.testTaskList = [new TaskItem(0, 'fewfw')];
   }
 
   public login(name: string, password: string): boolean {
     if (this.isAuth()) {
-      let user = this.getUser();
+      const user = this.getUser();
       if (name === user.name && password === user.password) {
-        console.log("user is loggined");
+        console.log('user is loggined');
         return true;
+      } else {
+        console.log('user is not loggined!');
       }
-      else {
-        console.log("user is not loggined!");
-      }
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   public isAuth(): boolean {
-    var user = this.getUser();
-    var expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
-    var now = moment();
-    var nowInCorrectFormat = moment(now, this.dateFormat);
+    const user = this.getUser();
+    const expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
+    const now = moment();
+    const nowInCorrectFormat = moment(now, this.dateFormat);
     if (user == null) {
       return false;
     }
@@ -57,7 +55,7 @@ export class UserDataService {
   }
 
   public getUser(): User {
-    var user = JSON.parse(localStorage.getItem(this.currentUserKey));
+    const user = JSON.parse(localStorage.getItem(this.currentUserKey));
     return user;
   }
 

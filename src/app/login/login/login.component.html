@@ -1,15 +1,22 @@
-<form>
-  <div>
-    <p>
-      <label for="name">Name: </label>
-    </p>
-    <input type="text" placeholder="name" #name>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container input-group">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Sign in to Your task list</h1>
+      <div class="account-wall">
+        <img class="profile-img" src="./../../../assets/images/photo.png"
+          alt="">
+        <form class="form-signin">
+          <input type="text" class="form-control" placeholder="Name" required autofocus #name>
+          <input type="password" class="form-control" placeholder="Password" required #password>
+          <button class="btn btn-lg btn-info btn-block" type="button" (click)="login(name.value, password.value)">
+            Sign in</button>
+        </form>
+      </div>
+      <!-- <a href="#" class="text-center new-account">Create an account </a> -->
+    </div>
   </div>
-  <div>
-    <p>
-      <label for="password">Password: </label>
-    </p>
-    <input type="password" placeholder="password" #password>
-  </div>
-  <button type="button" class="btn btn-info" (click)="login(name.value, password.value)">Sign In</button>
-</form>
+</div>
