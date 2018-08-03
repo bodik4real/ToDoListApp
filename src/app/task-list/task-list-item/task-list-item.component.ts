@@ -17,8 +17,8 @@ export class TaskListItemComponent {
   @Output() taskDelete = new EventEmitter<number>();
   @Output() taskOpenModel = new EventEmitter<any>();
 
-  constructor( private modalService: BsModalService){
-    
+  constructor(private modalService: BsModalService) {
+
   }
 
   public editTask(task: TaskItem) {
@@ -30,7 +30,7 @@ export class TaskListItemComponent {
   public deleteTask(taskNumber: number) {
     this.task.id = taskNumber;
     this.taskDelete.emit(this.task.id);
-       this.modalRef.hide();
+    this.modalRef.hide();
   }
 
   public startEditing() {
