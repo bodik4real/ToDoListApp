@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListGuard } from './task-list.guard';
 import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MenuBarComponent } from './app/menu-bar/menu-bar.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    MenuBarComponent,
   ],
   providers: [
     UserDataService,

@@ -22,3 +22,7 @@ li {
 .buttons-group-visibility :hover {
   display: inline-block;
 }
+
+#editInput{
+  width: 80%;
+}
