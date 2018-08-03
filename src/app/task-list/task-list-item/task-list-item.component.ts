@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { TaskItem } from '../../models/TaskItem';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
@@ -25,6 +25,10 @@ export class TaskListItemComponent {
     this.task = task;
     this.taskEdit.emit(this.task);
     this.isTaskEditing = false;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
 
   public deleteTask(taskNumber: number) {
