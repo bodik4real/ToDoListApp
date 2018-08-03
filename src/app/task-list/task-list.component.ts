@@ -34,10 +34,6 @@ export class TaskListComponent {
 
   }
 
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-  }
-
   public addTask(taskValue: string): void {
     const task = new TaskItem(this.tasks.length, taskValue);
     this.taskDataService.addTask(task);
@@ -46,7 +42,6 @@ export class TaskListComponent {
   }
 
   public deleteTask(taskIndex: number, template): void {
-    this.openModal(template);
     this.taskDataService.deleteTask(taskIndex);
     const currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
     this.tasks.splice(currentTaskIndex, 1);

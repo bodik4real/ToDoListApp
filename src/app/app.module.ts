@@ -10,6 +10,7 @@ import { TaskListModule } from './task-list/task-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListGuard } from './task-list.guard';
 import { ModalModule } from 'ngx-bootstrap';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ModalModule } from 'ngx-bootstrap';
   ],
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   providers: [
     UserDataService,
