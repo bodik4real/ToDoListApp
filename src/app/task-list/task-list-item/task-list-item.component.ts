@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { TaskItem } from '../../models/TaskItem';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
@@ -17,8 +17,8 @@ export class TaskListItemComponent {
   @Output() taskDelete = new EventEmitter<number>();
   @Output() taskOpenModel = new EventEmitter<any>();
 
-  constructor( private modalService: BsModalService){
-    
+  constructor(private modalService: BsModalService) {
+
   }
 
   public editTask(task: TaskItem) {
@@ -27,10 +27,14 @@ export class TaskListItemComponent {
     this.isTaskEditing = false;
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
   public deleteTask(taskNumber: number) {
     this.task.id = taskNumber;
     this.taskDelete.emit(this.task.id);
-       this.modalRef.hide();
+    this.modalRef.hide();
   }
 
   public startEditing() {

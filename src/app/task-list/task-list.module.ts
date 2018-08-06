@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDataService } from '../services/user-data.service';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 
-
 @NgModule({
   imports: [
     CommonModule,

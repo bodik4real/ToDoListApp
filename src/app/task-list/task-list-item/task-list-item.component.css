@@ -3,7 +3,7 @@ li {
 }
 
 .space-between-items-and-input {
-  margin-top: 15px;
+  margin-top: 13px;
 }
 
 .set-left-margin {
@@ -21,4 +21,12 @@ li {
 
 .buttons-group-visibility :hover {
   display: inline-block;
+}
+
+#editInput{
+  width: 80%;
+}
+
+.containing-div {
+  display: flex;
 }

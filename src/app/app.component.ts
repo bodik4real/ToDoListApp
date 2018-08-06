@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { UserDataService } from './services/user-data.service';
+import { AuthGuard } from './auth.guard';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ToDoListApp';
+  title = 'To do list ';
+
+  constructor(private userDataService: UserDataService) {}
+
+  public IsAuthenticated():boolean{
+    return this.userDataService.isAuth();
+  }
 }

@@ -13,7 +13,7 @@
       <div class="alert alert-danger" *ngIf="taskForm.controls['task'].invalid && taskForm.controls['task'].touched">
         Error: Min Length of task is 5 symbols!
       </div>
-      <app-task-list-item *ngFor="let task of tasks" [task]="task" (onTaskEdit)="editTask($event)" (onTaskDelete)="deleteTask($event)"></app-task-list-item>
+      <app-task-list-item *ngFor="let task of tasks" [task]="task" (taskEdit)="editTask($event)" (taskDelete)="deleteTask($event)"></app-task-list-item>
     </form>
   </div>
 </div>

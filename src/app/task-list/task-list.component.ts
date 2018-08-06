@@ -1,9 +1,7 @@
-import { Component, OnInit, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TaskItem } from '../models/TaskItem';
-import { UserDataService } from '../services/user-data.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
@@ -28,9 +26,7 @@ export class TaskListComponent {
 
   constructor(
     private taskDataService: TaskDataService,
-    private fb: FormBuilder,
-    private userDataService: UserDataService,
-    private modalService: BsModalService) {
+    private fb: FormBuilder) {
 
   }
 
@@ -43,12 +39,12 @@ export class TaskListComponent {
 
   public deleteTask(taskIndex: number, template): void {
     this.taskDataService.deleteTask(taskIndex);
-    const currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === taskIndex);
+    const currentTaskIndex = this.taskDataService.getAllTasks().findIndex(t => t.id === taskIndex);
     this.tasks.splice(currentTaskIndex, 1);
   }
 
   public editTask(task: TaskItem) {
-    const currentTaskIndex = this.userDataService.getUser().tasks.findIndex(t => t.id === task.id);
+    const currentTaskIndex = this.taskDataService.getAllTasks().findIndex(t => t.id === task.id);
     this.taskDataService.editTask(task);
     this.tasks[currentTaskIndex] = task;
   }

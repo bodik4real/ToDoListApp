@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { TaskItem } from '../models/TaskItem';
 
@@ -17,19 +15,19 @@ export class UserDataService {
   private testTaskList: Array<TaskItem>;
 
   constructor(private router: Router) {
-    const date = moment('2013-03-24');
-    const testUser = new User('TestName', 'TestSurName', 'password', date.toString(), this.generateTestTaskList());
-    localStorage.setItem(this.currentUserKey, JSON.stringify(testUser));
   }
 
   public generateTestTaskList(): Array<TaskItem> {
     return this.testTaskList = [new TaskItem(0, 'fewfw')];
   }
 
-  public login(name: string, password: string): boolean {
+  public login(user: User): boolean {
+    this.saveUser(user);
+    return true;
+    /*
     if (this.isAuth()) {
-      const user = this.getUser();
-      if (name === user.name && password === user.password) {
+      const cachedUser = this.getCachedUser();
+      if (name === user.name && cachedUser.password === user.password) {
         console.log('user is loggined');
         return true;
       } else {
@@ -37,24 +35,24 @@ export class UserDataService {
       }
     } else {
       return false;
-    }
+    }*/
   }
 
   public isAuth(): boolean {
-    const user = this.getUser();
+    const user = this.getCachedUser();
+    if (user === null) {
+      return false;
+    }
     const expectedDate = moment(user.lastLogin, this.dateFormat).add(1, 'days');
     const now = moment();
     const nowInCorrectFormat = moment(now, this.dateFormat);
-    if (user == null) {
-      return false;
-    }
     if (nowInCorrectFormat > expectedDate) {
       return false;
     }
     return true;
   }
 
-  public getUser(): User {
+  public getCachedUser(): User {
     const user = JSON.parse(localStorage.getItem(this.currentUserKey));
     return user;
   }

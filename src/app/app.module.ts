@@ -8,9 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { TaskListModule } from './task-list/task-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TaskListGuard } from './task-list.guard';
+import { AuthGuard } from './auth.guard';
 import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -26,11 +27,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    MenuComponent
   ],
   providers: [
     UserDataService,
     TaskDataService,
-    TaskListGuard
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
