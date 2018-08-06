@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './auth.guard';
 import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    MenuBarComponent
+    MenuComponent
   ],
   providers: [
     UserDataService,

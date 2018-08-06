@@ -19,25 +19,8 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    pathMatch: 'full',      
-  },
- /* {
-    path: '',
     pathMatch: 'full',
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
-    children: [
-      {
-        path: '',
-        component: AppComponent
-      },
-      {
-        path: '',
-        component: MenuBarComponent,
-        outlet: 'menu-bar',
-      }
-    ]
-  },*/
+  },
   {
     path: '**',
     component: PageNotFoundComponent

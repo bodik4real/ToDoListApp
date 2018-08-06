@@ -68,12 +68,4 @@ export class UserDataService {
   public saveUser(user: User) {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
   }
-
-  public isLogining(): boolean {
-    if (this.router.url === '/login' || this.router.url === '/') {
-      return false;
-    } else {
-      return true;
-    }
-  }
 }

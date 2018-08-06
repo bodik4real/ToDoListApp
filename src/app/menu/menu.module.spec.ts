@@ -1,4 +1,4 @@
-import { MenuBarModule } from './menu-bar.module';
+import { MenuBarModule } from './menu.module';
 
 describe('MenuBarModule', () => {
   let menuBarModule: MenuBarModule;
