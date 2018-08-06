@@ -8,10 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { TaskListModule } from './task-list/task-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TaskListGuard } from './task-list.guard';
+import { AuthGuard } from './auth.guard';
 import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MenuBarComponent } from './app/menu-bar/menu-bar.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 @NgModule({
   imports: [
@@ -27,12 +27,12 @@ import { MenuBarComponent } from './app/menu-bar/menu-bar.component';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    MenuBarComponent,
+    MenuBarComponent
   ],
   providers: [
     UserDataService,
     TaskDataService,
-    TaskListGuard
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

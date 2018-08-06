@@ -4,7 +4,7 @@ import { UserDataService } from './services/user-data.service';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class TaskListGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
     constructor(private userDataService: UserDataService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {

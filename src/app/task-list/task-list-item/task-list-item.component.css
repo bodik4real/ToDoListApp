@@ -3,7 +3,7 @@ li {
 }
 
 .space-between-items-and-input {
-  margin-top: 15px;
+  margin-top: 13px;
 }
 
 .set-left-margin {
@@ -25,4 +25,8 @@ li {
 
 #editInput{
   width: 80%;
+}
+
+.containing-div {
+  display: flex;
 }

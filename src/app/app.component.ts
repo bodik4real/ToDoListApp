@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { UserDataService } from './services/user-data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +8,10 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   title = 'ToDoListApp';
+
+  constructor(private userDataService: UserDataService) {}
+
+  public isLogining():boolean{
+    return this.userDataService.isLogining();
+  }
 }
