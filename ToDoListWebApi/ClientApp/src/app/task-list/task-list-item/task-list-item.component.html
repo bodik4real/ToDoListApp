@@ -6,7 +6,7 @@
       <button *ngIf="isTaskEditing" type="button" class="btn btn-primary btn-xs buttons-align set-left-margin" (click)="editTask(task)">Save</button>
       <button *ngIf="!isTaskEditing" class="btn btn-warning btn-xs" type="button" (click)="startEditing()">Edit</button>
       <button class="btn btn-danger btn-xs set-left-margin" type="button" (click)="openModal(template)">Delete</button>
-      <span class="set-left-margin">{{task.createdDate}}</span>
+      <span class="set-left-margin">{{task.createdDate | date:"dd/MM/yyyy h:mm a"}}</span>
     </div>
   </div>
   <ng-template #template>
