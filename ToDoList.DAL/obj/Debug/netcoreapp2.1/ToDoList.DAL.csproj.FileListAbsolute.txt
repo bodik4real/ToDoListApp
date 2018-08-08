@@ -1,0 +1,14 @@
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\ToDoList.DAL.deps.json
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\ToDoList.DAL.dll
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\obj\Debug\netcoreapp2.1\ToDoList.DAL.csprojAssemblyReference.cache
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\obj\Debug\netcoreapp2.1\ToDoList.DAL.csproj.CoreCompileInputs.cache
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\obj\Debug\netcoreapp2.1\ToDoList.DAL.AssemblyInfoInputs.cache
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\obj\Debug\netcoreapp2.1\ToDoList.DAL.AssemblyInfo.cs
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\ToDoList.Services.dll
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\ToDoListWebApi.dll
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\ToDoListWebApi.pdb
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml
+C:\ProjectWork\Angular\ToDoListApp\ToDoList.DAL\obj\Debug\netcoreapp2.1\ToDoList.DAL.csproj.CopyComplete
