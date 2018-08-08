@@ -31,10 +31,12 @@ export class TaskListComponent {
   }
 
   public addTask(taskValue: string): void {
-    const task = new TaskItem(this.tasks.length, taskValue);
-    this.taskDataService.addTask(task);
-    this.tasks.push(task);
-    this.taskForm.reset();
+    if (taskValue.length > 5) {
+      const task = new TaskItem(this.tasks.length, taskValue);
+      this.taskDataService.addTask(task);
+      this.tasks.push(task);
+      this.taskForm.reset();
+    }
   }
 
   public deleteTask(taskIndex: number, template): void {
