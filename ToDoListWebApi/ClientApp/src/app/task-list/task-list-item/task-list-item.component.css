@@ -30,3 +30,13 @@ li {
 .containing-div {
   display: flex;
 }
+
+.buttons-group-visability {
+  display: none; 
+}
+ .buttons-group-visability :hover{
+   display: inline-block;
+}
+ .task-list-container:hover .buttons-group-visability{
+  display: inline-block;
+}
