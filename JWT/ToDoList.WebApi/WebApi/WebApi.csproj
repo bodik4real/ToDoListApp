@@ -2,12 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>aspnet-TestIdentity-79EE1C08-3EFC-402C-945A-DBAA3E72067B</UserSecretsId>
+    <UserSecretsId>aspnet-WebApi-6F9DB758-09EB-4702-A879-BE7FD37A2ACE</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApi.DAL\WebApi.DAL.csproj" />
+    <ProjectReference Include="..\WebApi.Services\WebApi.Services.csproj" />
   </ItemGroup>
 
 </Project>
