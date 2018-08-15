@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Identity;
 
-namespace WebApi.DAL.Migrations.UserIdentityDb
+namespace WebApi.DAL.Migrations
 {
     [DbContext(typeof(UserIdentityDbContext))]
-    [Migration("20180815074038_UserIdentityFirst")]
-    partial class UserIdentityFirst
+    partial class UserIdentityDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

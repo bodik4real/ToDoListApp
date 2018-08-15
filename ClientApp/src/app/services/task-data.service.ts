@@ -12,22 +12,22 @@ export class TaskDataService {
   }
 
   public addTask(task: TaskItem): void {
-    console.log(this.userDataService.getCachedUser().tasks);
+    /*console.log(this.userDataService.getCachedUser().tasks);
     const user = this.userDataService.getCachedUser();
     user.tasks.push(task);
-    localStorage.setItem('currentUserLogin', JSON.stringify(user));
+    localStorage.setItem('currentUserLogin', JSON.stringify(user));*/
   }
 
   public deleteTask(taskId: number): void {
 
-    const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === taskId);
+   /* const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === taskId);
 
     if (currentTaskIndex) {
       this.userDataService.getCachedUser().tasks.splice(currentTaskIndex, 1);
-    }
+    }*/
   }
 
-  public editTask(editedTask: TaskItem): void {
+  public editTask(editedTask: TaskItem): void {/*
     const user = this.userDataService.getCachedUser();
     if (user) {
       const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === editedTask.id);
@@ -35,11 +35,13 @@ export class TaskDataService {
         user.tasks[currentTaskIndex] = editedTask;
         this.userDataService.saveUser(user);
       }
-    }
+    }*/
   }
 
   public getAllTasks(): Array<TaskItem>
   {
-    return this.userDataService.getCachedUser().tasks;
+    return null;
+  //  return this.userDataService.getCachedUser().tasks;
   }
+  
 }

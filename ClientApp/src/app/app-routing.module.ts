@@ -6,6 +6,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BoardComponent } from './board/board.component';
 
 const routes: Routes = [
   {
@@ -17,12 +18,17 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
+    path: 'board',
+    component: BoardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'taskList',
     component: TaskListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: '',
+    path: '', 
     component: LoginComponent,
     pathMatch: 'full',
   },

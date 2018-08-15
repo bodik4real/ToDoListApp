@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.DAL.Entities;
 using WebApi.Entities;
 
 namespace WebApi
@@ -18,6 +19,8 @@ namespace WebApi
         }
 
         public DbSet<TaskItem> TaskItem { get; set; }
+        public DbSet<Board> Board { get; set; }
+        public DbSet<BoardTaskItem> BoardTaskItem { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,6 +34,8 @@ namespace WebApi
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<TaskItem>().ToTable("TaskItem");
+            modelBuilder.Entity<BoardTaskItem>().ToTable("BoardTaskItem");
+            modelBuilder.Entity<Board>().ToTable("Board");
         }
     }
 }

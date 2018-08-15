@@ -1,13 +1,10 @@
-import { BaseUserModel } from "./BaseUserModel";
-import { TaskItem } from "../TaskItem";
 
-export class UserModel extends BaseUserModel {
+export class UserModel {
     public userName: string;
-    public tasks: Array<TaskItem>;
+    public id: string;
 
-    constructor(email: string, password: string, userName: string) {
-        super(email, password);
-        this.tasks = new Array<TaskItem>();
+    constructor(userName: string, id: string) {
+        this.id = id;
         this.userName = userName;
     }
 }

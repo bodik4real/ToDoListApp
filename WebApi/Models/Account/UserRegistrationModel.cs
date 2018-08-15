@@ -1,5 +1,4 @@
-﻿
-namespace WebApi.Models
+﻿namespace WebApi.Models
 {
     public class UserRegistrationModel : BaseUserModel
     {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../services/user-data.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,10 +9,9 @@ import { UserDataService } from '../services/user-data.service';
 })
 export class PageNotFoundComponent{
 
-  constructor(private userDataService: UserDataService) { }
+  constructor(private authService: AuthService) { }
 
   public redirectToLoginPage(){
-    this.userDataService.redirectToLogin();
+    this.authService.redirectToLogin();
   }
-
 }

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApi.DAL.Migrations.UserIdentityDb
+namespace WebApi.DAL.Migrations
 {
-    public partial class UserIdentityFirst : Migration
+    public partial class IdF : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

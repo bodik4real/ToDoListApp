@@ -6,16 +6,19 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.Models;
+using WebApi.Services.Models;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("CorsPolicy")]
     [ApiController]
     public class AccountController : Controller
     {
@@ -36,47 +39,66 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<JwtAuthModel> Login([FromBody] UserLoginModel model)
+        public async Task<ResponseModel<JwtAuthModel>> Login([FromBody] UserLoginModel model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var response = new ResponseModel<JwtAuthModel>();
 
-            if (result.Succeeded)
+            try
             {
-                var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
-                return await GenerateJwtToken(model.Email, appUser);
-            }
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
-            throw new ApplicationException("INVALID_LOGIN_ATTEMPT");
+                if (result.Succeeded)
+                {
+                    var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
+                    response.Result = await GenerateJwtToken(model.Email, appUser);
+                    response.IsSuccessful = true;
+                }
+                else
+                {
+                    response.ErrorMessage = "Failed to login with user’s creditionals";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = "Internal server occured: Failed to login";
+            }
+            return response;
         }
 
         [HttpPost]
         [Route("register")]
-        public async Task<JwtAuthModel> Register([FromBody] UserRegistrationModel model)
+        public async Task<ResponseModel<JwtAuthModel>> Register([FromBody] UserRegistrationModel model)
         {
-            var user = new IdentityUser
-            {
-                UserName = model.Email,
-                Email = model.Email
-            };
-
-            IdentityResult result = null;
+            var response = new ResponseModel<JwtAuthModel>();
 
             try
             {
+                var user = new IdentityUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email
+                };
+
+                IdentityResult result = null;
+
                 result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    response.Result = await GenerateJwtToken(model.Email, user);
+                    response.IsSuccessful = true;
+                }
+                else
+                {
+                    response.ErrorMessage = "Failed to create new account";
+                }
             }
             catch (Exception ex)
             {
-                var a = ex;
+                response.ErrorMessage = "Internal server occured: Failed to register";
             }
-
-            if (result.Succeeded)
-            {
-                await _signInManager.SignInAsync(user, false);
-                return await GenerateJwtToken(model.Email, user);
-            }
-
-            throw new ApplicationException("UNKNOWN_ERROR");
+            return response;
         }
 
         private async Task<JwtAuthModel> GenerateJwtToken(string email, IdentityUser user)
@@ -100,7 +122,12 @@ namespace WebApi.Controllers
                 signingCredentials: creds
             );
 
-            return new JwtAuthModel { AuthToken = new JwtSecurityTokenHandler().WriteToken(token) };
+            return new JwtAuthModel {
+                AuthToken = new JwtSecurityTokenHandler().WriteToken(token),
+                UserName = user.UserName,
+                UserId = user.Id,
+                JwtExpire = expires
+            };
         }
     }
 }

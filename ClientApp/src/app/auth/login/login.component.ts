@@ -3,6 +3,7 @@ import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
 import { LoginUserModel } from '../../models/auth/LoginUserModel'
 import { TaskItem } from '../../models/TaskItem';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,21 @@ import { TaskItem } from '../../models/TaskItem';
 })
 export class LoginComponent {
 
-  constructor(private userDataService: UserDataService, private router: Router) {
+  errorMessage: string;
+  isRegisterError: boolean;
+
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   public login(email: string, password: string) {
-    let user = new LoginUserModel( email, password);
-    this.userDataService.login(user).subscribe(isLoggedIn=>{
-      if (isLoggedIn) {
-        this.router.navigate(['/taskList']);
+    let user = new LoginUserModel(email, password);
+    this.authService.login(user).subscribe(res => {
+      if (res.isSuccessful) {
+        this.router.navigate(['/board']);
       } else {
-        this.router.navigate(['/login']);
+        this.errorMessage = res.errorMessage;
+        this.isRegisterError = true;
       }
-    })  
+    })
   }
 }

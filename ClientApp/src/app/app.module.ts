@@ -14,6 +14,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MenuModule } from './menu/menu.module';
 import { ConfigService } from './services/config-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { BoardModule } from './board/board.module';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    BoardModule,
     ModalModule.forRoot()
   ],
   declarations: [
@@ -36,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserDataService,
     TaskDataService,
     ConfigService,
+    AuthService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

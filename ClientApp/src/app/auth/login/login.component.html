@@ -13,5 +13,8 @@
         </form>
       </div>
     </div>
+    <div class="error" *ngIf="isRegisterError">
+      {{errorMessage}}
+    </div>
   </div>
 </div>
