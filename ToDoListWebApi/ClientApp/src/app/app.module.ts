@@ -12,10 +12,13 @@ import { AuthGuard } from './auth.guard';
 import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MenuModule } from './menu/menu.module';
+import { ConfigService } from './services/config-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     LoginModule,
     TaskListModule,
     MenuModule,
@@ -32,6 +35,7 @@ import { MenuModule } from './menu/menu.module';
   providers: [
     UserDataService,
     TaskDataService,
+    ConfigService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
