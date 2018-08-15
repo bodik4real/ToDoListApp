@@ -36,7 +36,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<object> Login([FromBody] UserLoginModel model)
+        public async Task<JwtAuthModel> Login([FromBody] UserLoginModel model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
@@ -51,7 +51,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<object> Register([FromBody] UserRegistrationModel model)
+        public async Task<JwtAuthModel> Register([FromBody] UserRegistrationModel model)
         {
             var user = new IdentityUser
             {
@@ -79,7 +79,7 @@ namespace WebApi.Controllers
             throw new ApplicationException("UNKNOWN_ERROR");
         }
 
-        private async Task<object> GenerateJwtToken(string email, IdentityUser user)
+        private async Task<JwtAuthModel> GenerateJwtToken(string email, IdentityUser user)
         {
             var claims = new List<Claim>
             {
@@ -100,7 +100,7 @@ namespace WebApi.Controllers
                 signingCredentials: creds
             );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtAuthModel { AuthToken = new JwtSecurityTokenHandler().WriteToken(token) };
         }
     }
 }

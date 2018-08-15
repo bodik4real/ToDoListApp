@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-3 col-lg-offset-4">
+    <form [formGroup]="taskForm" (submit)="addTask(task.value)">
+      <div class="input-group">
+        <input type="text" name="task" formControlName="task" placeholder="Type your task here" class="form-control" #task>
+        <div *ngIf="task.invalid">
+          <h3>Your task isn’t valid!</h3>
+        </div>
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="button" (click)="addTask(task.value)">Add</button>
+        </span>
+      </div>
+      <div class="alert alert-danger" *ngIf="taskForm.controls['task'].invalid && taskForm.controls['task'].touched">
+        Error: Min Length of task is 5 symbols!
+      </div>
+      <app-task-list-item *ngFor="let task of tasks" [task]="task" (taskEdit)="editTask($event)" (taskDelete)="deleteTask($event)"></app-task-list-item>
+    </form>
+  </div>
+</div>
