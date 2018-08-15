@@ -1,0 +1,17 @@
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.deps.json
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.dll
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.pdb
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.csproj.CoreCompileInputs.cache
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.AssemblyInfoInputs.cache
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.AssemblyInfo.cs
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.dll
+C:\ProjectWork\Angular\ToDoListFinalProject\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.pdb
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.deps.json
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.dll
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\bin\Debug\netcoreapp2.1\WebApi.DAL.pdb
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.csprojAssemblyReference.cache
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.csproj.CoreCompileInputs.cache
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.AssemblyInfoInputs.cache
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.AssemblyInfo.cs
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.dll
+C:\ProjectWork\Angular\ToDoListApp\WebApi.DAL\obj\Debug\netcoreapp2.1\WebApi.DAL.pdb
