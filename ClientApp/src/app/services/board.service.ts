@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { Board } from '../models/Board';
 import { ResponseModeExtended } from '../models/ResponseModel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,7 +16,7 @@ export class BoardService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllBoards(userId: string): Observable<ResponseModeExtended<Board>> {
-    return this.http.get<ResponseModeExtended<Board>>(this._userBoardUrl + "/" + userId, { 'headers': this.headers });
+  public getAllBoards(userId: string): Observable<ResponseModeExtended<Array<Board>>> {
+    return this.http.get<ResponseModeExtended<Array<Board>>>(this._userBoardUrl + "/" + userId, { 'headers': this.headers });
   }
 }

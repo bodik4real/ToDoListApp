@@ -18,7 +18,12 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     const user = this.userService.getCachedUser();
     if (user) {
-      this.boardService.getAllBoards(user.id);
+      this.boardService.getAllBoards(user.id).subscribe(res=> {
+        if(res.isSuccessful)
+        {
+         this.boards = res.result; 
+        }
+      });
     }
 
   }

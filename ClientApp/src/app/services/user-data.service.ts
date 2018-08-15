@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginUserModel } from '../models/auth/LoginUserModel';
-import { RegisterUserModel } from '../models/auth/RegisterUserModel';
+import { UserRegistrationModel } from '../models/auth/UserRegistrationModel';
 import { JwtAuthModel } from '../models/auth/JwtAuthModel';
 import { UserModel } from '../models/auth/UserModel';
 import Const from '../models/Const';
@@ -42,7 +42,7 @@ export class UserDataService {
     return null;
   }
 
-  public saveUser(user: RegisterUserModel) {
+  public saveUser(user: UserRegistrationModel) {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
   }
 }

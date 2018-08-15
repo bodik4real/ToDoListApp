@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { RegisterUserModel } from '../../models/auth/RegisterUserModel';
+import { UserRegistrationModel } from '../../models/auth/UserRegistrationModel';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +19,8 @@ export class RegisterComponent {
   }
 
   public register(email: string, password: string) {
-    let user = new RegisterUserModel(name, email, password);
-    this.authService.login(user).subscribe(res => {
+    let user = new UserRegistrationModel(name, email, password);
+    this.authService.register(user).subscribe(res => {
       if (res.isSuccessful) {
         this.router.navigate(['/taskList']);
       } else {

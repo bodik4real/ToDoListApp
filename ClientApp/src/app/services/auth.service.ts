@@ -5,9 +5,9 @@ import Const from '../models/Const';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
-import { RegisterUserModel } from '../models/auth/RegisterUserModel';
 import { ResponseModeExtended } from '../models/ResponseModel';
 import { Router } from '@angular/router';
+import { UserRegistrationModel } from '../models/auth/UserRegistrationModel';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  register(registerModel: RegisterUserModel): Observable<ResponseModeExtended<JwtAuthModel>> {
+  register(registerModel: UserRegistrationModel): Observable<ResponseModeExtended<JwtAuthModel>> {
 
     return this.http.post<ResponseModeExtended<JwtAuthModel>>(this._registerUrl, registerModel, { 'headers': this.headers })
       .map(res => {

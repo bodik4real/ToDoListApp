@@ -10,8 +10,8 @@ using WebApi.Identity;
 namespace WebApi.DAL.Migrations
 {
     [DbContext(typeof(UserIdentityDbContext))]
-    [Migration("20180815195959_IdF")]
-    partial class IdF
+    [Migration("20180815200914_UserIdentityFirst")]
+    partial class UserIdentityFirst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

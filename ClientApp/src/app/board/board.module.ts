@@ -4,6 +4,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { UserDataService } from '../services/user-data.service';
 import { BoardComponent } from './board.component';
 import { BoardItemComponent } from './board-item/board-item.component';
+import { BoardService } from '../services/board.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { BoardItemComponent } from './board-item/board-item.component';
   exports: [
     BoardComponent,
   ],
-  providers: [UserDataService]
+  providers: [
+    UserDataService,BoardService]
 })
 export class BoardModule { }

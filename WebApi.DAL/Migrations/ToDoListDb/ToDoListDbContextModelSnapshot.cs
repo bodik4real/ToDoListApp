@@ -28,8 +28,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<string>("UserId");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Board");
                 });
@@ -44,8 +43,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<int>("TaskItemId");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.HasIndex("BoardId");
 
@@ -64,8 +62,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<string>("Value");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("TaskItem","dbo");
                 });

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApi.DAL.Migrations
 {
-    public partial class IdF : Migration
+    public partial class UserIdentityFirst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

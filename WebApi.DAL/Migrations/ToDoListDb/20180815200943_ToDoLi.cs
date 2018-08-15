@@ -21,7 +21,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Id", x => x.Id);
+                    table.PrimaryKey("PK_Board", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +36,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Id", x => x.Id);
+                    table.PrimaryKey("PK_TaskItem", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +50,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Id", x => x.Id);
+                    table.PrimaryKey("PK_BoardTaskItem", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BoardTaskItem_Board_BoardId",
                         column: x => x.BoardId,

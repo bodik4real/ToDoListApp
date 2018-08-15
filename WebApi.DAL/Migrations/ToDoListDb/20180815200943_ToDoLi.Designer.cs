@@ -9,7 +9,7 @@ using WebApi;
 namespace WebApi.DAL.Migrations.ToDoListDb
 {
     [DbContext(typeof(ToDoListDbContext))]
-    [Migration("20180815200059_ToDoLi")]
+    [Migration("20180815200943_ToDoLi")]
     partial class ToDoLi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<string>("UserId");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("Board");
                 });
@@ -46,8 +45,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<int>("TaskItemId");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.HasIndex("BoardId");
 
@@ -66,8 +64,7 @@ namespace WebApi.DAL.Migrations.ToDoListDb
 
                     b.Property<string>("Value");
 
-                    b.HasKey("Id")
-                        .HasName("PK_Id");
+                    b.HasKey("Id");
 
                     b.ToTable("TaskItem","dbo");
                 });
