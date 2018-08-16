@@ -44,9 +44,9 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("save")]
-        public ResponseModel Save(Board board)
+        public ResponseModel<Board> Save(Board board)
         {
-            return _service.AddBoard(board);
+            return _service.AddBoard(board); 
         }
 
         [HttpPost]

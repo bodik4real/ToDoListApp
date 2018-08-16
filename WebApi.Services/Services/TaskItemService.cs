@@ -38,12 +38,12 @@ namespace WebApi.Services
             return response;
         }
 
-        public ResponseModel AddTaskItem(TaskItem taskItem)
+        public ResponseModel<TaskItem> AddTaskItem(TaskItem taskItem)
         {
-            var response = new ResponseModel();
+            var response = new ResponseModel<TaskItem>();
             if (taskItem != null)
             {
-                _repository.AddTaskItem(taskItem);
+                response.Result = _repository.AddTaskItem(taskItem);
                 response.IsSuccessful = true;
             }
 

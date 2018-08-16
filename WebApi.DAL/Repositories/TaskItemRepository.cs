@@ -29,11 +29,13 @@ namespace WebApi.DAL.Repositories
             return photo;
         }
 
-        public void AddTaskItem(TaskItem photo)
+        public TaskItem AddTaskItem(TaskItem taskitem)
         {
-            _context.TaskItem.Add(photo);
+            _context.TaskItem.Add(taskitem);
 
             _context.SaveChanges();
+
+            return _context.TaskItem.Last();
         }
 
         public void UpdateTaskItem(TaskItem taskItem)

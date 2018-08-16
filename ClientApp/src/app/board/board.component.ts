@@ -40,13 +40,16 @@ export class BoardComponent implements OnInit {
   }
 
   public addBoard(boardName: string) {
-    if (this.currentUser) {
-      const board = new Board(this.currentUser.id, boardName);
-      this.boardService.saveBoard(board).subscribe(res => {
-        if (res.isSuccessful) {
-          this.boards.push(board);
-        }
-      });
+    if (!this.boardForm.invalid) {
+      if (this.currentUser) {
+        const board = new Board(this.currentUser.id, boardName);
+        this.boardService.saveBoard(board).subscribe(res => {
+          if (res.isSuccessful) {
+            this.boards.push(res.result);
+          }
+        });
+        this.boardForm.reset();
+      }
     }
   }
 }

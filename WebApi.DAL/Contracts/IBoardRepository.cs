@@ -8,7 +8,7 @@ namespace WebApi.DAL.Contracts
          Board GetBoard(int boardId);       
          List<Board> GetAll();
          List<Board> UserBoards(string userId);
-         void AddBoard(Board board);
+         Board AddBoard(Board board);
          void UpdateBoard(Board board);
          void DeleteBoard(int boardId);       
     }

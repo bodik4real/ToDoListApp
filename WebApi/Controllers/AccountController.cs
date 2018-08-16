@@ -73,7 +73,7 @@ namespace WebApi.Controllers
             {
                 var user = new IdentityUser
                 {
-                    UserName = model.Email,
+                    UserName = model.UserName,
                     Email = model.Email
                 };
 

@@ -37,7 +37,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("save")]
-        public ResponseModel Save(TaskItem taskItem)
+        public ResponseModel<TaskItem> Save(TaskItem taskItem)
         {
             return _service.AddTaskItem(taskItem);
         }

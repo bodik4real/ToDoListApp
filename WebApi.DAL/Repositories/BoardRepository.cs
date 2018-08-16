@@ -33,11 +33,13 @@ namespace WebApi.DAL.Repositories
                    .ToList();
         }
 
-        public void AddBoard(Board board)
+        public Board AddBoard(Board board)
         {
             _context.Board.Add(board);
 
             _context.SaveChanges();
+
+            return _context.Board.Last();
         }
 
         public void UpdateBoard(Board board)
