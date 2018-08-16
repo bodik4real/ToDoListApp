@@ -22,6 +22,9 @@
             <div class="alert alert-danger" *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].errors?.required">
               Password is required
             </div>
+            <div class="alert alert-danger" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+              Min Length of password is 5 symbols!
+            </div>
         </form>
       </div>
     </div>
