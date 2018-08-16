@@ -13,13 +13,10 @@ export class RegisterComponent {
 
   public errorMessage: string;
   public isRegisterError: boolean;
-  private pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
 
   public registerForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(30),
     ]),
     email: new FormControl('', [
       Validators.required,

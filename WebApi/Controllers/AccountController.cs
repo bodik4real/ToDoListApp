@@ -40,10 +40,11 @@ namespace WebApi.Controllers
         public async Task<ResponseModel<JwtAuthModel>> Login([FromBody] UserLoginModel model)
         {
             var response = new ResponseModel<JwtAuthModel>();
+            var userName = _signInManager.UserManager.Users.Where(u => u.Email == model.Email).FirstOrDefault().UserName;
 
             try
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(userName, model.Password, false, false);
 
                 if (result.Succeeded)
                 {
@@ -60,6 +61,7 @@ namespace WebApi.Controllers
             {
                 response.ErrorMessage = "Internal server occured: Failed to login";
             }
+
             return response;
         }
 
