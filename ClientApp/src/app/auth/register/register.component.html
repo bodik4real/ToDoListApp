@@ -4,17 +4,32 @@
       <h1 class="text-center login-title">Sign up if you dont have account</h1>
       <div class="account-wall">
         <img class="profile-img" src="../../../assets/images/photo.png" alt="">
-        <form class="form-signin">
-          <input type="text" class="form-control" placeholder="Your Name" required autofocus #name>
-          <input type="text" class="form-control" placeholder="Email" required autofocus #email>
-          <input type="password" class="form-control" placeholder="Password" required #password>
+        <form [formGroup]="registerForm" class="form-signin"  class="form-signin">
+          <input type="text" class="form-control" formControlName="name" placeholder="Your Name" required autofocus #name>
+          <input type="text" class="form-control" formControlName="email" placeholder="Email" required #email>
+          <input type="password" class="form-control" formControlName="password" placeholder="Password" required #password>
           <button class="btn btn-lg btn-info btn-block" type="button" (click)="register(name.value, email.value, password.value)">
             Sign Up</button>
+            <div class="alert alert-danger" *ngIf="registerForm.controls['name'].touched && registerForm.controls['name'].errors?.required">
+              Name is required
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('email')">
+              Email is invalid
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].errors?.required">
+              Email is required
+            </div>
+            <div class="alert alert-danger" *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].errors?.required">
+              Password is required
+            </div>
         </form>
       </div>
     </div>
     <div class="error" *ngIf="isRegisterError">
       {{errorMessage}}
     </div>
+  </div>
+  <div class="row error-message">
+    <div class="alert alert-danger" *ngIf="isLoginError" role="alert"> {{errorMessage}}</div>
   </div>
 </div>

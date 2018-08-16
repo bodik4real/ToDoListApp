@@ -39,12 +39,12 @@ namespace WebApi.Services
             return response;
         }
 
-        public ResponseModel AddBoard(Board board)
+        public ResponseModel<Board> AddBoard(Board board)
         {
-            var response = new ResponseModel();
+            var response = new ResponseModel<Board>();
             if (board != null)
             {
-                _repository.AddBoard(board);
+                response.Result = _repository.AddBoard(board);
                 response.IsSuccessful = true;
             }
 

@@ -34,9 +34,9 @@ export class UserDataService {
   }
 
   public getUserName(): string {
-    const user = this.getCachedUser();
+    const user = localStorage.getItem(Const.AuthJwtKey);
     if (user) {
-      return user.userName;
+      return user.toString();
     }
     return null;
   }

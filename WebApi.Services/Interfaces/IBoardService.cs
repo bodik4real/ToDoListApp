@@ -8,7 +8,7 @@ namespace WebApi.Services
     {
         ResponseModel<Board> GetBoard(int boardId);
         ResponseModel<List<Board>> UserBoards(string userId);
-        ResponseModel AddBoard(Board board);
+        ResponseModel<Board> AddBoard(Board board);
         ResponseModel UpdateBoard(Board board);
         ResponseModel DeleteBoard(int boardId);
     }

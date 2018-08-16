@@ -8,7 +8,7 @@ namespace WebApi.Services
     {
         ResponseModel<List<TaskItem>> UserTaskItems(string userId);
         ResponseModel<TaskItem> GetTaskItem(int taskItemId);
-        ResponseModel AddTaskItem(TaskItem taskItem);
+        ResponseModel<TaskItem> AddTaskItem(TaskItem taskItem);
         ResponseModel UpdateTaskItem(TaskItem taskItem);
         ResponseModel DeleteTaskItem(int taskItemId);
     }

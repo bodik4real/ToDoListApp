@@ -17,8 +17,8 @@ export class BoardService {
       Const.BaseUrl + '/board/user-boards/' + userId);
   }
 
-  public saveBoard(board: Board): Observable<ResponseModel> {
-    return this.http.post<ResponseModel>(
+  public saveBoard(board: Board): Observable<ResponseModeExtended<Board>> {
+    return this.http.post<ResponseModeExtended<Board>>(
       Const.BaseUrl + '/board/save', board);
   }
 }
