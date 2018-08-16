@@ -1,32 +1,28 @@
 ﻿using System.Collections.Generic;
-using WebApi.DAL.Contracts;
-using WebApi.Entities;
 using System.Linq;
+using WebApi.DAL.Contracts;
+using WebApi.DAL.DbContexts;
+using WebApi.DAL.Entities;
 
 namespace WebApi.DAL.Repositories
 {
     public class TaskItemRepository : ITaskItemRepository
     {
-        private ToDoListDbContext _context;
+        private readonly ToDoListDbContext _context;
+
         public TaskItemRepository(ToDoListDbContext context)
         {
             _context = context;
         }
+
         public List<TaskItem> UserTaskItems(string userId)
         {
-            return (from item in _context.TaskItem
-                    where item.UserId == userId
-                    select item)
-                    .ToList();
+            return _context.TaskItem.Where(t => t.UserId == userId).ToList();
         }
 
         public TaskItem GetTaskItem(int taskItemId)
         {
-            var photo = _context.TaskItem
-                .Where(x => x.Id == taskItemId)
-                .FirstOrDefault();
-
-            return photo;
+            return _context.TaskItem.FirstOrDefault(x => x.Id == taskItemId);
         }
 
         public TaskItem AddTaskItem(TaskItem taskitem)
@@ -40,15 +36,9 @@ namespace WebApi.DAL.Repositories
 
         public void UpdateTaskItem(TaskItem taskItem)
         {
-            var updatedTaskItem = (from a in _context.TaskItem
-                                   where a.Id == taskItem.Id
-                                   select a)
-                                .FirstOrDefault();
+            var updatedTaskItem = _context.TaskItem.FirstOrDefault(t => t.Id == taskItem.Id);
 
-            if (updatedTaskItem == null)
-            {
-                return;
-            }
+            if (updatedTaskItem == null) return;
 
             updatedTaskItem.Value = taskItem.Value;
 
@@ -57,8 +47,8 @@ namespace WebApi.DAL.Repositories
 
         public void DeleteTaskItem(int taskItemId)
         {
-            var taskItemForDelete = _context.TaskItem.Where(x => x.Id == taskItemId).FirstOrDefault();
-            _context.Remove(taskItemForDelete);
+            var taskItemForDelete = _context.TaskItem.FirstOrDefault(x => x.Id == taskItemId);
+            if (taskItemForDelete != null) _context.Remove(taskItemForDelete);
         }
     }
 }

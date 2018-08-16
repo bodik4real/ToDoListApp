@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
-using WebApi.Entities;
-using WebApi.Services;
+using WebApi.DAL.Entities;
+using WebApi.Services.Contracts;
 using WebApi.Services.Models;
 
 namespace WebApi.Controllers
@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     [Authorize]
     public class TaskItemController : Controller
     {
-        private ITaskItemService _service;
+        private readonly ITaskItemService _service;
 
         public TaskItemController(ITaskItemService service)
         {
@@ -25,7 +25,7 @@ namespace WebApi.Controllers
         [Route("get-by-user-id/{userId}")]
         public ResponseModel<List<TaskItem>> GetByUserId(string userId)
         {
-            return _service.UserTaskItems(userId);
+            return _service.GetUserTaskItems(userId);
         }
 
         [HttpGet]

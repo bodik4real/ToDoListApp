@@ -2,6 +2,7 @@
 using WebApi.DAL.Contracts;
 using WebApi.DAL.Repositories;
 using WebApi.Services;
+using WebApi.Services.Contracts;
 
 namespace WebApi
 {

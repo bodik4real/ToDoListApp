@@ -2,15 +2,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApi.Entities
+namespace WebApi.DAL.Entities
 {
     [Table("TaskItem", Schema = "dbo")]
     public class TaskItem
     {
         [Key]
         public int Id { get; set; }
+
         public string Value { get; set; }
+
         public DateTime CreatedDate { get; } = DateTime.UtcNow;
+
         public string UserId { get; set; }
     }
 }

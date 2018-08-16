@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace WebApi.Identity
+namespace WebApi.DAL.DbContexts
 {
     public class UserIdentityDbContext : IdentityDbContext
     {
