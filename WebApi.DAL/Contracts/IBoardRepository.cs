@@ -5,16 +5,18 @@ namespace WebApi.DAL.Contracts
 {
     public interface IBoardRepository
     {
-         Board GetBoard(int boardId);   
-        
-         List<Board> GetAll();
+        Board GetBoard(int boardId);
 
-         List<Board> UserBoards(string userId);
+        List<Board> GetAll();
 
-         Board AddBoard(Board board);
+        List<Board> UserBoards(string userId);
 
-         void UpdateBoard(Board board);
+        Board AddBoard(Board board);
 
-         void DeleteBoard(int boardId);       
+        void UpdateBoard(Board board);
+
+        void DeleteBoard(int boardId);
+
+        TaskItem AddTask(int boardId, TaskItem taskItem);
     }
 }

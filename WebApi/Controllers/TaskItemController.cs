@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Cors;
 using WebApi.DAL.Entities;
 using WebApi.Services.Contracts;
 using WebApi.Services.Models;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/task")]
     [EnableCors("CorsPolicy")]
     [ApiController]
     [Authorize]
@@ -22,38 +23,43 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("get-by-user-id/{userId}")]
-        public ResponseModel<List<TaskItem>> GetByUserId(string userId)
+        [Route("get-by-board-id/{boardId:int}")]
+        public ResponseModel<List<TaskItem>> GetTaskItemsByBoardId(int boardId)
         {
-            return _service.GetUserTaskItems(userId);
+            return _service.GetTaskItemsByBoardId(boardId);
         }
 
         [HttpGet]
-        [Route("get-by-id/{taskItemId}")]
+        [Route("get-by-id/{taskItemId:int}")]
         public ResponseModel<TaskItem> GetById(int taskItemId)
         {
             return _service.GetTaskItem(taskItemId);
         }
 
-        [HttpPost]
-        [Route("save")]
-        public ResponseModel<TaskItem> Save(TaskItem taskItem)
-        {
-            return _service.AddTaskItem(taskItem);
-        }
-
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
-        public ResponseModel Update(TaskItem taskItem)
+        public ResponseModel<TaskItem> Update(TaskItem taskItem)
         {
             return _service.UpdateTaskItem(taskItem);
         }
 
-        [HttpGet]
-        [Route("delete/{taskItemId}")]
+        [HttpDelete]
+        [Route("delete/{taskItemId:int}")]
         public ResponseModel Delete(int taskItemId)
         {
             return _service.DeleteTaskItem(taskItemId);
+        }
+
+        [HttpPost]
+        [Route("add-task")]
+        public ResponseModel<TaskItem> AddTaskItem(TaskModel taskModel)
+        {
+            return _service.AddTaskItem(taskModel.BoardId, new TaskItem
+            {
+                Id = taskModel.Id,
+                UserId = taskModel.UserId,
+                Value = taskModel.Value
+            });
         }
     }
 }

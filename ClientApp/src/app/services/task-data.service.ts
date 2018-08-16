@@ -1,44 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserDataService } from './user-data.service';
-import { TaskItem } from '../models/TaskItem';
+import { TaskItem, TaskModel } from '../models/TaskItem';
+import Const from '../models/Const';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
+import { ResponseModeExtended, ResponseModel } from '../models/ResponseModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskDataService {
 
-  constructor(private router: Router, private userDataService: UserDataService) {
+  private taskItemUrl = Const.BaseUrl + '/task';
+
+  constructor(private http: HttpClient) { }
+
+  public save(task: TaskItem): Observable<ResponseModeExtended<TaskItem>> {
+    return this.http.post<ResponseModeExtended<TaskItem>>(
+      this.taskItemUrl + '/add-task', new TaskModel(task.boardId, task.value));
   }
 
-  public addTask(task: TaskItem): void {
-    /*console.log(this.userDataService.getCachedUser().tasks);
-    const user = this.userDataService.getCachedUser();
-    user.tasks.push(task);
-    localStorage.setItem('currentUserLogin', JSON.stringify(user));*/
+  public deleteTask(taskId: number): Observable<ResponseModel> {
+    return this.http.delete<ResponseModel>(
+      this.taskItemUrl + '/delete/' + taskId);
   }
 
-  public deleteTask(taskId: number): void {
-    /* const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === taskId);
-     if (currentTaskIndex) {
-       this.userDataService.getCachedUser().tasks.splice(currentTaskIndex, 1);
-     }*/
+  public editTask(editedTask: TaskItem): Observable<ResponseModeExtended<TaskItem>> {
+    return this.http.put<ResponseModeExtended<TaskItem>>(
+      this.taskItemUrl + '/update', editedTask);
   }
 
-  public editTask(editedTask: TaskItem): void {/*
-    const user = this.userDataService.getCachedUser();
-    if (user) {
-      const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === editedTask.id);
-      if (currentTaskIndex) {
-        user.tasks[currentTaskIndex] = editedTask;
-        this.userDataService.saveUser(user);
-      }
-    }*/
+  public getTaskItemsByBoardId(boardId: string): Observable<ResponseModeExtended<Array<TaskItem>>> {
+    return this.http.get<ResponseModeExtended<Array<TaskItem>>>(
+      this.taskItemUrl + '/get-by-board-id/' + boardId);
   }
-
-  public getAllTasks(): Array<TaskItem> {
-    return null;
-    //  return this.userDataService.getCachedUser().tasks;
-  }
-
 }

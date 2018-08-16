@@ -17,7 +17,7 @@
   </div>
   <div class="row board-items">
     <div *ngFor="let board of boards">
-      <app-board-item [board]="board"></app-board-item>
+      <app-board-item [board]="board" (boardDelete)='deleteBoard($event)'></app-board-item>
     </div>
   </div>
 </div>

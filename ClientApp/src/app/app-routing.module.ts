@@ -23,7 +23,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'taskList/:id',
+    path: 'board/:id',
     component: TaskListComponent,
     canActivate: [AuthGuard]
   },
@@ -43,7 +43,13 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(
+      routes,
+      {
+        enableTracing: false,
+        useHash: true
+      }
+    )
   ],
   exports: [RouterModule]
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TaskItem } from '../models/TaskItem';
@@ -11,10 +11,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./task-list.component.css']
 })
 
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
 
   public tasks = new Array<TaskItem>();
   public IsHidden = true;
+  private boardId: string;
   modalRef: BsModalRef;
 
   public taskForm: FormGroup = new FormGroup({
@@ -29,28 +30,47 @@ export class TaskListComponent {
     private taskDataService: TaskDataService,
     private fb: FormBuilder,
     private route: ActivatedRoute) {
-      this.route.params.subscribe(res => console.log(res.id));
+    this.route.params.subscribe(res => this.boardId = res.id);
+
+  }
+
+  public ngOnInit() {
+    this.taskDataService.getTaskItemsByBoardId(this.boardId).subscribe(res => {
+      if (res.isSuccessful) {
+        this.tasks = res.result;
+      }
+    });
 
   }
 
   public addTask(taskValue: string): void {
     if (taskValue.length > 5) {
-      const task = new TaskItem(this.tasks.length, taskValue);
-      this.taskDataService.addTask(task);
-      this.tasks.push(task);
+      const task = new TaskItem(this.boardId, taskValue);
+      this.taskDataService.save(task).subscribe(res => {
+        if (res.isSuccessful) {
+          this.tasks.push(res.result);
+        }
+      });
+
       this.taskForm.reset();
     }
   }
 
-  public deleteTask(taskIndex: number, template): void {
-    this.taskDataService.deleteTask(taskIndex);
-    const currentTaskIndex = this.taskDataService.getAllTasks().findIndex(t => t.id === taskIndex);
-    this.tasks.splice(currentTaskIndex, 1);
+  public deleteTask(taskId: number): void {
+    this.taskDataService.deleteTask(taskId).subscribe(res => {
+      if (res.isSuccessful) {
+        const currentTaskIndex = this.tasks.findIndex(t => t.id === taskId);
+        this.tasks.splice(currentTaskIndex, 1);
+      }
+    });
   }
 
   public editTask(task: TaskItem) {
-    const currentTaskIndex = this.taskDataService.getAllTasks().findIndex(t => t.id === task.id);
-    this.taskDataService.editTask(task);
-    this.tasks[currentTaskIndex] = task;
+    const currentTaskIndex = this.tasks.findIndex(t => t.id === task.id);
+    this.taskDataService.editTask(task).subscribe(res => {
+      if (res.isSuccessful) {
+        this.tasks[currentTaskIndex] = res.result;
+      }
+    });
   }
 }

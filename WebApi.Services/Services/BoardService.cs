@@ -125,5 +125,26 @@ namespace WebApi.Services
 
             return response;
         }
+
+        public ResponseModel<TaskItem> AddTaskItem(int boardId, TaskItem taskItem)
+        {
+
+            var response = new ResponseModel<TaskItem>();
+            try
+            {
+                if (taskItem != null)
+                {
+                    response.IsSuccessful = true;
+                    response.Result = _repository.AddTask(boardId, taskItem);
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
+            }
+            return response;
+        }
+
     }
 }

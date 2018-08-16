@@ -5,14 +5,14 @@ namespace WebApi.DAL.Contracts
 {
     public interface ITaskItemRepository
     {
-        List<TaskItem> UserTaskItems(string userId);
-
         TaskItem GetTaskItem(int taskItemId);
 
-        TaskItem AddTaskItem(TaskItem photo);
+        TaskItem AddTaskItem(int boardId, TaskItem taskItem);
 
-        void UpdateTaskItem(TaskItem taskItem);
+        TaskItem UpdateTaskItem(TaskItem taskItem);
 
         void DeleteTaskItem(int taskItemId);
+
+        List<TaskItem> GetTaskItemsByBoardId(int boardId);
     }
 }

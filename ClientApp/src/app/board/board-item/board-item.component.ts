@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Board } from '../../models/Board';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -8,22 +8,18 @@ import { Router } from '@angular/router';
   templateUrl: './board-item.component.html',
   styleUrls: ['./board-item.component.css']
 })
-export class BoardItemComponent implements OnInit {
+export class BoardItemComponent {
 
-  @Input()
-  public board: Board;
+  @Input() public board: Board;
+  @Output() public boardDelete = new EventEmitter<string>();
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
-
   public openTasks() {
-    this.router.navigate(['/taskList/' + this.board.id]);
+    this.router.navigate(['/board/' + this.board.id]);
   }
 
   public removeBoard() {
-
+    this.boardDelete.emit(this.board.id);
   }
-
 }
