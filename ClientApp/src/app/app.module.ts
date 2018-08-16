@@ -13,9 +13,11 @@ import { ModalModule } from 'ngx-bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MenuModule } from './menu/menu.module';
 import { ConfigService } from './services/config-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { BoardModule } from './board/board.module';
+import { JwtInterceptor } from './services/interceptors/jwt-interceptor.service';
+import { ErrorInterceptor } from './services/interceptors/error.interceptor';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { BoardModule } from './board/board.module';
     TaskDataService,
     ConfigService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
