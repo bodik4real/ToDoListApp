@@ -1,0 +1,42 @@
+li {
+  list-style-type: none;
+}
+
+.space-between-items-and-input {
+  margin-top: 13px;
+}
+
+.set-left-margin {
+  margin-left: 15px;
+}
+
+.buttons-align {
+  float: left;
+  margin-right: 15px;
+}
+
+.buttons-group-visibility {
+  display: none;
+}
+
+.buttons-group-visibility :hover {
+  display: inline-block;
+}
+
+#editInput{
+  width: 50%;
+}
+
+.containing-div {
+  display: flex;
+}
+
+.buttons-group-visability {
+  display: none; 
+}
+ .buttons-group-visability :hover{
+   display: inline-block;
+}
+ .task-list-container:hover .buttons-group-visability{
+  display: inline-block;
+}

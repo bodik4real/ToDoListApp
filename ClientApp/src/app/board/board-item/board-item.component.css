@@ -1,0 +1,14 @@
+.board-item {
+  margin-left: 15px;
+  max-width: 250px;
+  float: left;
+  -webkit-box-shadow: -1px 30px 99px -42px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 30px 99px -42px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 30px 99px -42px rgba(0, 0, 0, 0.75);
+}
+
+.btn-group {
+  margin: 10px;
+  position: relative;
+  bottom: 0;
+}
