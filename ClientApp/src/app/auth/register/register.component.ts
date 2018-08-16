@@ -10,24 +10,23 @@ import { UserRegistrationModel } from '../../models/auth/UserRegistrationModel';
 })
 export class RegisterComponent {
 
-  errorMessage: string;
-  isRegisterError: boolean;
+  public errorMessage: string;
+  public isRegisterError: boolean;
 
   constructor(
     private authService: AuthService,
     private router: Router) {
   }
 
-  public register(email: string, password: string) {
-    let user = new UserRegistrationModel(name, email, password);
+  public register(name: string, email: string, password: string) {
+    const user = new UserRegistrationModel(email, password, name);
     this.authService.register(user).subscribe(res => {
       if (res.isSuccessful) {
-        this.router.navigate(['/taskList']);
+        this.router.navigate(['/board']);
       } else {
         this.errorMessage = res.errorMessage;
         this.isRegisterError = true;
       }
-    })
+    });
   }
-
 }

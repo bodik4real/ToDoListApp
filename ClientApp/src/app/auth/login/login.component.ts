@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
-import { LoginUserModel } from '../../models/auth/LoginUserModel'
+import { LoginUserModel } from '../../models/auth/LoginUserModel';
 import { TaskItem } from '../../models/TaskItem';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,14 +12,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
 
-  errorMessage: string;
-  isRegisterError: boolean;
+  public errorMessage: string;
+  public isRegisterError: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   public login(email: string, password: string) {
-    let user = new LoginUserModel(email, password);
+    const user = new LoginUserModel(email, password);
     this.authService.login(user).subscribe(res => {
       if (res.isSuccessful) {
         this.router.navigate(['/board']);
@@ -27,6 +27,6 @@ export class LoginComponent {
         this.errorMessage = res.errorMessage;
         this.isRegisterError = true;
       }
-    })
+    });
   }
 }

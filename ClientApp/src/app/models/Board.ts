@@ -1,5 +1,10 @@
 export class Board {
-    public Id: string;
+    public id: string;
     public userId: string;
     public name: string;
+
+    constructor(userId: string, name: string) {
+        this.userId = userId;
+        this.name = name;
+    }
 }

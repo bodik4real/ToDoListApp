@@ -3,6 +3,7 @@ import { TaskDataService } from '../services/task-data.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TaskItem } from '../models/TaskItem';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -26,7 +27,9 @@ export class TaskListComponent {
 
   constructor(
     private taskDataService: TaskDataService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private route: ActivatedRoute) {
+      this.route.params.subscribe(res => console.log(res.id));
 
   }
 

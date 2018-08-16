@@ -10,6 +10,7 @@ namespace WebApi.Services
     public class TaskItemService : ITaskItemService
     {
         private ITaskItemRepository _repository;
+
         public TaskItemService(ITaskItemRepository repository)
         {
             _repository = repository;

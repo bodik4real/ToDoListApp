@@ -1,8 +1,8 @@
-import { BaseUserModel } from "./BaseUserModel";
-import { TaskItem } from "../TaskItem";
+import { BaseUserModel } from './BaseUserModel';
+import { TaskItem } from '../TaskItem';
 
 export class UserRegistrationModel extends BaseUserModel {
-    public userName: string
+    public userName: string;
 
     constructor(email: string, password: string, userName: string) {
 

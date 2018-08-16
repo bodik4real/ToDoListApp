@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Board } from '../../models/Board';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board-item',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardItemComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public board: Board;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public openTasks() {
+    this.router.navigate(['/taskList/' + this.board.id]);
+  }
+
+  public removeBoard() {
+
   }
 
 }

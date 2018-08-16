@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Net;
+using Microsoft.AspNetCore.Cors;
 using WebApi.DAL.Entities;
-using WebApi.Models;
 using WebApi.Services;
 using WebApi.Services.Models;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("CorsPolicy")]
     [Authorize]
     [ApiController]
-    public class BoardController : ControllerBase
+    public class BoardController : Controller
     {
         private IBoardService _service;
 
@@ -23,30 +22,35 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("get-by-id/{boardId:int}")]
         public ResponseModel<Board> GetBoard(int boardId)
         {
             return _service.GetBoard(boardId);
         }
 
         [HttpGet]
+        [Route("user-boards/{userId}")]
         public ResponseModel<List<Board>> UserBoards(string userId)
         {
             return _service.UserBoards(userId);
         }
 
         [HttpGet]
+        [Route("delete/{boardId:int}")]
         public ResponseModel Delete(int boardId)
         {
             return _service.DeleteBoard(boardId);
         }
 
         [HttpPost]
+        [Route("save")]
         public ResponseModel Add(Board board)
         {
             return _service.AddBoard(board);
         }
 
         [HttpPost]
+        [Route("update")]
         public ResponseModel UpdateBoard(Board board)
         {
             return _service.UpdateBoard(board);

@@ -27,11 +27,10 @@ export class UserDataService {
 
   public getCachedUser(): UserModel {
     const jwt = <JwtAuthModel>JSON.parse(localStorage.getItem(Const.AuthJwtKey));
-    if(jwt)
-    {
-      return new UserModel(jwt.userName, jwt.userId);      
+    if (jwt) {
+      return new UserModel(jwt.userName, jwt.userId);
     }
-    return  null;
+    return null;
   }
 
   public getUserName(): string {

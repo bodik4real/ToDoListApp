@@ -15,8 +15,7 @@ export class MenuComponent {
     this.name = this.userDataService.getUserName();
   }
 
-  public logout()
-  {
-        this.authService.logout();
+  public logout() {
+    this.authService.logout();
   }
 }

@@ -1,4 +1,4 @@
-export class ResponseModel  {
+export class ResponseModel {
     public isSuccessful: boolean;
     public errorMessage: string;
 }

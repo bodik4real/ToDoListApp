@@ -13,9 +13,6 @@ import { UserRegistrationModel } from '../models/auth/UserRegistrationModel';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string = 'https://localhost:44326/api/account';
-  private _loginUrl = this.baseUrl + '/login';
-  private _registerUrl = this.baseUrl + '/register';
   private _loggedIn: boolean;
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -23,23 +20,24 @@ export class AuthService {
 
   register(registerModel: UserRegistrationModel): Observable<ResponseModeExtended<JwtAuthModel>> {
 
-    return this.http.post<ResponseModeExtended<JwtAuthModel>>(this._registerUrl, registerModel, { 'headers': this.headers })
+    return this.http.post<ResponseModeExtended<JwtAuthModel>>(
+      Const.BaseUrl + '/account/register', registerModel, { 'headers': this.headers })
       .map(res => {
         this.saveAuthJwt(res);
         return res;
       });
-  };
+  }
 
   public login(user: LoginUserModel): Observable<ResponseModeExtended<JwtAuthModel>> {
     return this.http.post<ResponseModeExtended<JwtAuthModel>>(
-      this._loginUrl,
+      Const.BaseUrl + '/account/login',
       user,
       { 'headers': this.headers }
     )
       .map(res => {
-        this.saveAuthJwt(res); 
+        this.saveAuthJwt(res);
         return res;
-      })
+      });
   }
 
   public isAuth(): boolean {
@@ -49,14 +47,12 @@ export class AuthService {
       return false;
     }
 
-    const expirationDate = moment(jwt.jwtExpire).format("YYYY-MM-DD HH:mm:ss");
-    const now = moment().format("YYYY-MM-DD HH:mm:ss");;
-    const nowMoment = moment(now, Const.DateFormat);
+    const expirationDate = moment(jwt.jwtExpire).format(Const.DateFormat);
+    const now = moment().format(Const.DateFormat);
     if (now > expirationDate) {
       return false;
     }
     return true;
-
   }
 
   public getCachedAuthJwt(): JwtAuthModel {
@@ -70,6 +66,7 @@ export class AuthService {
   public logout() {
     localStorage.removeItem(Const.AuthJwtKey);
     this._loggedIn = false;
+    this.redirectToLogin();
   }
 
   private saveAuthJwt(response: ResponseModeExtended<JwtAuthModel>): boolean {

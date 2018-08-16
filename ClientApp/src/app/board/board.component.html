@@ -1,5 +1,23 @@
-<div class="row">
-  <div *ngFor="let board of boards">
-    <app-board-item></app-board-item>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="boardForm" (submit)="addBoard(board.value)">
+      <div class="input-group">
+        <input type="text" name="board" formControlName="board" placeholder="Type your board name here" class="form-control" #board>
+        <div *ngIf="board.invalid">
+          <h3>Your board name isn’t valid!</h3>
+        </div>
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="button" (click)="addBoard(board.value)">Add</button>
+        </span>
+      </div>
+      <div class="alert alert-danger" *ngIf="boardForm.controls['board'].invalid && boardForm.controls['board'].touched">
+        Error: Min Length of task is 5 symbols!
+      </div>
+    </form>
+  </div>
+  <div class="row board-items">
+    <div *ngFor="let board of boards">
+      <app-board-item [board]="board"></app-board-item>
+    </div>
   </div>
 </div>
