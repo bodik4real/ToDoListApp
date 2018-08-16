@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService } from '../services/user-data.service';
-import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -10,9 +9,9 @@ import { AuthService } from '../services/auth.service';
 
 export class PageNotFoundComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private router: Router) { }
 
-  public redirectToLoginPage() {
-    this.authService.redirectToLogin();
+  public redirectToHome() {
+    this.router.navigate(['/board']);
   }
 }

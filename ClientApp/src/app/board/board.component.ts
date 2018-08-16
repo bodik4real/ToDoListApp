@@ -51,4 +51,17 @@ export class BoardComponent implements OnInit {
       }
     }
   }
+
+  public deleteBoard(boardId: string) {
+    if(boardId)
+    {
+      this.boardService.deleteBoard(boardId).subscribe(res=>{
+        if(res.isSuccessful)
+        {
+          const boardIndex = this.boards.findIndex(b=>b.id === boardId)
+          this.boards.splice(boardIndex,1);          
+        }
+      });      
+    }
+  }
 }

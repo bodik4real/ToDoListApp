@@ -70,5 +70,17 @@ namespace WebApi.DAL.Repositories
 
             _context.SaveChanges();
         }
+
+        public TaskItem AddTask(int boardId, TaskItem taskItem)
+        {
+            var boardTaskItem = new BoardTaskItem();
+            boardTaskItem.BoardId = boardId;
+            boardTaskItem.TaskItemId = taskItem.Id;
+            boardTaskItem.TaskItem = taskItem;
+            _context.BoardTaskItem.Add(boardTaskItem);
+            _context.SaveChanges();
+
+            return _context.TaskItem.Last();
+        }
     }
 }

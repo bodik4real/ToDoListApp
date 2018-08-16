@@ -16,14 +16,14 @@ namespace WebApi.Services
             _repository = repository;
         }
 
-        public ResponseModel<List<TaskItem>> GetUserTaskItems(string userId)
+        public ResponseModel<List<TaskItem>> GetTaskItemsByBoardId(int boardId)
         {
             var response = new ResponseModel<List<TaskItem>>();
             try
             {
-                if (userId != null)
+                if (boardId != 0)
                 {
-                    response.Result = _repository.UserTaskItems(userId);
+                    response.Result = _repository.GetTaskItemsByBoardId(boardId);
                     response.IsSuccessful = true;
                 }
             }
@@ -56,14 +56,14 @@ namespace WebApi.Services
             return response;
         }
 
-        public ResponseModel<TaskItem> AddTaskItem(TaskItem taskItem)
+        public ResponseModel<TaskItem> AddTaskItem(int boardId, TaskItem taskItem)
         {
             var response = new ResponseModel<TaskItem>();
             try
             {
                 if (taskItem != null)
                 {
-                    response.Result = _repository.AddTaskItem(taskItem);
+                    response.Result = _repository.AddTaskItem(boardId, taskItem);
                     response.IsSuccessful = true;
                 }
             }
@@ -76,14 +76,14 @@ namespace WebApi.Services
             return response;
         }
 
-        public ResponseModel UpdateTaskItem(TaskItem taskItem)
+        public ResponseModel<TaskItem> UpdateTaskItem(TaskItem taskItem)
         {
-            var response = new ResponseModel();
+            var response = new ResponseModel<TaskItem>();
             try
             {
                 if (taskItem != null)
                 {
-                    _repository.UpdateTaskItem(taskItem);
+                    response.Result =  _repository.UpdateTaskItem(taskItem);
                     response.IsSuccessful = true;
                 }
             }
@@ -115,5 +115,6 @@ namespace WebApi.Services
 
             return response;
         }
+
     }
 }

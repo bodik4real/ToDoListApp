@@ -10,15 +10,22 @@ import Const from '../models/Const';
 })
 export class BoardService {
 
+  private boardUrl = Const.BaseUrl + '/board';
+
   constructor(private http: HttpClient) { }
 
   public getAllBoards(userId: string): Observable<ResponseModeExtended<Array<Board>>> {
     return this.http.get<ResponseModeExtended<Array<Board>>>(
-      Const.BaseUrl + '/board/get-user-boards/' + userId);
+      this.boardUrl + '/get-user-boards/' + userId);
   }
 
   public saveBoard(board: Board): Observable<ResponseModeExtended<Board>> {
     return this.http.post<ResponseModeExtended<Board>>(
-      Const.BaseUrl + '/board/save', board);
+      this.boardUrl + '/save', board);
+  }
+
+  public deleteBoard(boardId: string): Observable<ResponseModel> {
+    return this.http.delete<ResponseModel>(
+      this.boardUrl + '/delete/' + boardId);
   }
 }

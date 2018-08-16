@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Cors;
 using WebApi.DAL.Entities;
 using WebApi.Services.Contracts;
 using WebApi.Services.Models;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
@@ -35,7 +36,7 @@ namespace WebApi.Controllers
             return _service.GetUserBoards(userId);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("delete/{boardId:int}")]
         public ResponseModel Delete(int boardId)
         {
@@ -46,10 +47,10 @@ namespace WebApi.Controllers
         [Route("save")]
         public ResponseModel<Board> Save(Board board)
         {
-            return _service.AddBoard(board); 
+            return _service.AddBoard(board);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
         public ResponseModel Update(Board board)
         {

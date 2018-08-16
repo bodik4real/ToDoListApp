@@ -15,5 +15,7 @@ namespace WebApi.Services.Contracts
         ResponseModel UpdateBoard(Board board);
 
         ResponseModel DeleteBoard(int boardId);
+
+        ResponseModel<TaskItem> AddTaskItem(int boardId, TaskItem taskItem);
     }
 }

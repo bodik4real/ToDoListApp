@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { TaskItem } from '../models/TaskItem';
-import { Http, Response, Headers, RequestOptions, Jsonp } from '@angular/http';
-import { ConfigService } from './config-service.service';
-import { Observable, BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginUserModel } from '../models/auth/LoginUserModel';
 import { UserRegistrationModel } from '../models/auth/UserRegistrationModel';
 import { JwtAuthModel } from '../models/auth/JwtAuthModel';
 import { UserModel } from '../models/auth/UserModel';
@@ -19,10 +12,8 @@ import Const from '../models/Const';
 export class UserDataService {
 
   private currentUserKey = 'currentUser';
-  private testTaskList: Array<TaskItem>;
-  private _authTokenKey = 'auth_token';
 
-  constructor(private router: Router, private http: HttpClient, private configService: ConfigService) {
+  constructor() {
   }
 
   public getCachedUser(): UserModel {

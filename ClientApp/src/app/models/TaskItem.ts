@@ -7,8 +7,20 @@ export class TaskItem {
     public createdDate = moment();
     public boardId: string;
 
-    constructor(id: number, value: string) {
-        this.id = id;
+    constructor(boardId: string, value: string) {
+        this.boardId = boardId;
         this.value = value;
     }
 }
+
+export class TaskModel {
+    public id: number;
+    public value: string;
+    public createdDate = moment();
+    public boardId: string;
+
+    constructor(boardId: string, value: string) {
+        this.boardId = boardId;
+        this.value = value;
+    }
+  }

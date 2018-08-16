@@ -6,14 +6,14 @@ namespace WebApi.Services.Contracts
 {
     public interface ITaskItemService
     {
-        ResponseModel<List<TaskItem>> GetUserTaskItems(string userId);
+        ResponseModel<List<TaskItem>> GetTaskItemsByBoardId(int boardId);
 
         ResponseModel<TaskItem> GetTaskItem(int taskItemId);
 
-        ResponseModel<TaskItem> AddTaskItem(TaskItem taskItem);
-
-        ResponseModel UpdateTaskItem(TaskItem taskItem);
+        ResponseModel<TaskItem> UpdateTaskItem(TaskItem taskItem);
 
         ResponseModel DeleteTaskItem(int taskItemId);
+
+        ResponseModel<TaskItem> AddTaskItem(int boardId, TaskItem taskItem);
     }
 }
