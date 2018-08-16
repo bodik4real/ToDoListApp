@@ -19,8 +19,7 @@ export class BoardComponent implements OnInit {
   public boardForm: FormGroup = new FormGroup({
     board: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(30)
+      Validators.minLength(5)
     ])
   });
 
