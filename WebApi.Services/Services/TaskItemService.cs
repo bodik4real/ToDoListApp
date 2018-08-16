@@ -1,26 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebApi.DAL.Contracts;
-using WebApi.Entities;
+using WebApi.DAL.Entities;
+using WebApi.Services.Contracts;
 using WebApi.Services.Models;
 
 namespace WebApi.Services
 {
     public class TaskItemService : ITaskItemService
     {
-        private ITaskItemRepository _repository;
+        private readonly ITaskItemRepository _repository;
 
         public TaskItemService(ITaskItemRepository repository)
         {
             _repository = repository;
         }
 
-        public ResponseModel<List<TaskItem>> UserTaskItems(string userId)
+        public ResponseModel<List<TaskItem>> GetUserTaskItems(string userId)
         {
             var response = new ResponseModel<List<TaskItem>>();
-            if (userId != null)
+            try
             {
-                response.Result = _repository.UserTaskItems(userId);
-                response.IsSuccessful = true;
+                if (userId != null)
+                {
+                    response.Result = _repository.UserTaskItems(userId);
+                    response.IsSuccessful = true;
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
             }
 
             return response;
@@ -29,10 +39,18 @@ namespace WebApi.Services
         public ResponseModel<TaskItem> GetTaskItem(int taskItemId)
         {
             var response = new ResponseModel<TaskItem>();
-            if (taskItemId!=0)
+            try
             {
-                response.Result = _repository.GetTaskItem(taskItemId);
-                response.IsSuccessful = true;
+                if (taskItemId != 0)
+                {
+                    response.Result = _repository.GetTaskItem(taskItemId);
+                    response.IsSuccessful = true;
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
             }
 
             return response;
@@ -41,10 +59,18 @@ namespace WebApi.Services
         public ResponseModel<TaskItem> AddTaskItem(TaskItem taskItem)
         {
             var response = new ResponseModel<TaskItem>();
-            if (taskItem != null)
+            try
             {
-                response.Result = _repository.AddTaskItem(taskItem);
-                response.IsSuccessful = true;
+                if (taskItem != null)
+                {
+                    response.Result = _repository.AddTaskItem(taskItem);
+                    response.IsSuccessful = true;
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
             }
 
             return response;
@@ -53,10 +79,18 @@ namespace WebApi.Services
         public ResponseModel UpdateTaskItem(TaskItem taskItem)
         {
             var response = new ResponseModel();
-            if (taskItem != null)
+            try
             {
-                _repository.UpdateTaskItem(taskItem);
-                response.IsSuccessful = true;
+                if (taskItem != null)
+                {
+                    _repository.UpdateTaskItem(taskItem);
+                    response.IsSuccessful = true;
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
             }
 
             return response;
@@ -65,10 +99,18 @@ namespace WebApi.Services
         public ResponseModel DeleteTaskItem(int taskItemId)
         {
             var response = new ResponseModel();
-            if (taskItemId != 0)
+            try
             {
-                _repository.DeleteTaskItem(taskItemId);
-                response.IsSuccessful = true;
+                if (taskItemId != 0)
+                {
+                    _repository.DeleteTaskItem(taskItemId);
+                    response.IsSuccessful = true;
+                }
+            }
+            catch (Exception e)
+            {
+                response.ErrorMessage = e.Message;
+                response.IsSuccessful = false;
             }
 
             return response;

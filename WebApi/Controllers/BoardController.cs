@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
 using WebApi.DAL.Entities;
-using WebApi.Services;
+using WebApi.Services.Contracts;
 using WebApi.Services.Models;
 
 namespace WebApi.Controllers
@@ -14,7 +14,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class BoardController : Controller
     {
-        private IBoardService _service;
+        private readonly IBoardService _service;
 
         public BoardController(IBoardService service)
         {
@@ -29,10 +29,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("user-boards/{userId}")]
-        public ResponseModel<List<Board>> UserBoards(string userId)
+        [Route("get-user-boards/{userId}")]
+        public ResponseModel<List<Board>> GetUserBoards(string userId)
         {
-            return _service.UserBoards(userId);
+            return _service.GetUserBoards(userId);
         }
 
         [HttpGet]

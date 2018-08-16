@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.Models;
+using WebApi.Models.Account;
 using WebApi.Services.Models;
 
 namespace WebApi.Controllers
@@ -40,7 +41,7 @@ namespace WebApi.Controllers
         public async Task<ResponseModel<JwtAuthModel>> Login([FromBody] UserLoginModel model)
         {
             var response = new ResponseModel<JwtAuthModel>();
-            var userName = _signInManager.UserManager.Users.Where(u => u.Email == model.Email).FirstOrDefault().UserName;
+            var userName = _signInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email)?.UserName;
 
             try
             {
@@ -54,12 +55,12 @@ namespace WebApi.Controllers
                 }
                 else
                 {
-                    response.ErrorMessage = "Failed to login with user’s creditionals";
+                    response.ErrorMessage = "Failed to login with user’s credentials";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                response.ErrorMessage = "Internal server occured: Failed to login";
+                response.ErrorMessage = "Internal server occurred: Failed to login";
             }
 
             return response;
@@ -96,7 +97,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                response.ErrorMessage = "Internal server occured: Failed to register";
+                response.ErrorMessage = "Internal server occurred: Failed to register";
             }
             return response;
         }

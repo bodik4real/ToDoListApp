@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 using WebApi.DAL.Entities;
-using WebApi.Entities;
 
-namespace WebApi
+namespace WebApi.DAL.DbContexts
 {
     public class ToDoListDbContext : DbContext
     {

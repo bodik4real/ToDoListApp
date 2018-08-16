@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
-using WebApi.DAL.Contracts;
-using WebApi.DAL.Entities;
 using System.Linq;
+using WebApi.DAL.Contracts;
+using WebApi.DAL.DbContexts;
+using WebApi.DAL.Entities;
 
 namespace WebApi.DAL.Repositories
 {
     public class BoardRepository : IBoardRepository
     {
-        private ToDoListDbContext _context;
+        private readonly ToDoListDbContext _context;
+
         public BoardRepository(ToDoListDbContext context)
         {
             _context = context;
@@ -15,9 +17,7 @@ namespace WebApi.DAL.Repositories
 
         public Board GetBoard(int boardId)
         {
-            return (from b in _context.Board
-                    where b.Id == boardId
-                    select b).FirstOrDefault();
+            return _context.Board.FirstOrDefault(b => b.Id == boardId);
         }
 
         public List<Board> GetAll()
@@ -27,10 +27,7 @@ namespace WebApi.DAL.Repositories
 
         public List<Board> UserBoards(string userId)
         {
-            return (from item in _context.Board
-                    where item.UserId == userId
-                    select item)
-                   .ToList();
+            return _context.Board.Where(b => b.UserId == userId).ToList();
         }
 
         public Board AddBoard(Board board)
@@ -44,10 +41,7 @@ namespace WebApi.DAL.Repositories
 
         public void UpdateBoard(Board board)
         {
-            var updatedBoard = (from b in _context.Board
-                                where b.Id == board.Id
-                                select b)
-                                .FirstOrDefault();
+            var updatedBoard = _context.Board.FirstOrDefault(b => b.Id == board.Id);
 
             if (updatedBoard == null)
             {
@@ -61,21 +55,16 @@ namespace WebApi.DAL.Repositories
 
         public void DeleteBoard(int boardId)
         {
-            var BoardForDelete = (from b in _context.Board
-                                  where b.Id == boardId
-                                  select b)
-                                  .FirstOrDefault();
+            var boardForDelete = _context.Board.FirstOrDefault(b => b.Id == boardId);
 
-            if (BoardForDelete == null)
+            if (boardForDelete == null)
             {
                 return;
             }
 
-            var boardTaskItemForDelete = (from b in _context.BoardTaskItem
-                                       where b.BoardId == boardId
-                                       select b).ToList();
+            var boardTaskItemForDelete = _context.BoardTaskItem.Where(b => b.BoardId == boardId).ToList();
 
-            _context.Board.Remove(BoardForDelete);
+            _context.Board.Remove(boardForDelete);
 
             _context.BoardTaskItem.RemoveRange(boardTaskItemForDelete);
 

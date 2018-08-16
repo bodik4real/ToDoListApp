@@ -1,15 +1,13 @@
 using System;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WebApi.Identity;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -26,7 +24,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            ConfigureDbContexts(services);
+            services.ConfigureDbContexts(Configuration.GetConnectionString("DefaultConnection"));
 
             ConfigureJwt(services);
 
@@ -45,7 +43,7 @@ namespace WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ToDoListDbContext appDbContext, UserIdentityDbContext identityDbContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -66,27 +64,6 @@ namespace WebApi
             app.UseCors("CorsPolicy");
 
             app.UseMvc();
-            appDbContext.Database.EnsureCreated();
-            identityDbContext.Database.EnsureCreated();
-        }
-
-        public void ConfigureDbContexts(IServiceCollection services)
-        {
-            services.AddDbContext<ToDoListDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApi.DAL"));
-            });
-
-            services.AddDbContext<UserIdentityDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApi.DAL"));
-            });
-
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<UserIdentityDbContext>()
-                .AddDefaultTokenProviders();
         }
 
         public void ConfigureJwt(IServiceCollection services)
