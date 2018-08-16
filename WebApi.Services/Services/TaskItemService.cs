@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using WebApi.DAL.Contracts;
 using WebApi.Entities;
 using WebApi.Services.Models;
@@ -15,6 +13,7 @@ namespace WebApi.Services
         {
             _repository = repository;
         }
+
         public ResponseModel<List<TaskItem>> UserTaskItems(string userId)
         {
             var response = new ResponseModel<List<TaskItem>>();

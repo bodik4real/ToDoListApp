@@ -12,7 +12,7 @@ export class MenuComponent {
   name: string;
 
   constructor(private userDataService: UserDataService, private authService: AuthService) {
-    this.name = this.userDataService.getUserName();
+    this.name = this.userDataService.getCachedUser().userName;
   }
 
   public logout() {

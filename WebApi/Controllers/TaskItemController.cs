@@ -23,35 +23,35 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("get-by-user-id/{userId}")]
-        public ResponseModel<List<TaskItem>> UserTaskItems(string userId)
+        public ResponseModel<List<TaskItem>> GetByUserId(string userId)
         {
             return _service.UserTaskItems(userId);
         }
 
         [HttpGet]
         [Route("get-by-id/{taskItemId}")]
-        public ResponseModel<TaskItem> GetTaskItem(int taskItemId)
+        public ResponseModel<TaskItem> GetById(int taskItemId)
         {
             return _service.GetTaskItem(taskItemId);
         }
 
         [HttpPost]
         [Route("save")]
-        public ResponseModel AddTaskItem(TaskItem taskItem)
+        public ResponseModel Save(TaskItem taskItem)
         {
             return _service.AddTaskItem(taskItem);
         }
 
         [HttpPost]
         [Route("update")]
-        public ResponseModel UpdateTaskItem(TaskItem taskItem)
+        public ResponseModel Update(TaskItem taskItem)
         {
             return _service.UpdateTaskItem(taskItem);
         }
 
         [HttpGet]
         [Route("delete/{taskItemId}")]
-        public ResponseModel DeleteTaskItem(int taskItemId)
+        public ResponseModel Delete(int taskItemId)
         {
             return _service.DeleteTaskItem(taskItemId);
         }

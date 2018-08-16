@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using WebApi.DAL.Contracts;
 using WebApi.DAL.Entities;
 using WebApi.Services.Models;
@@ -19,7 +18,7 @@ namespace WebApi.Services
         public ResponseModel<Board> GetBoard(int boardId)
         {
             var response = new ResponseModel<Board>();
-            if (boardId != null)
+            if (boardId != 0)
             {
                 response.Result = _repository.GetBoard(boardId); 
                 response.IsSuccessful = true;
@@ -67,7 +66,7 @@ namespace WebApi.Services
         public ResponseModel DeleteBoard(int boardId)
         {
             var response = new ResponseModel();
-            if (boardId != null)
+            if (boardId != 0)
             {
                 try
                 {

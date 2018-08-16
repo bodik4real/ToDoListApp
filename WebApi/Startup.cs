@@ -92,6 +92,7 @@ namespace WebApi
         public void ConfigureJwt(IServiceCollection services)
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
             services
                 .AddAuthentication(options =>
                 {

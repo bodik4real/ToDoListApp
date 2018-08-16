@@ -23,7 +23,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("get-by-id/{boardId:int}")]
-        public ResponseModel<Board> GetBoard(int boardId)
+        public ResponseModel<Board> GetById(int boardId)
         {
             return _service.GetBoard(boardId);
         }
@@ -44,14 +44,14 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("save")]
-        public ResponseModel Add(Board board)
+        public ResponseModel Save(Board board)
         {
             return _service.AddBoard(board);
         }
 
         [HttpPost]
         [Route("update")]
-        public ResponseModel UpdateBoard(Board board)
+        public ResponseModel Update(Board board)
         {
             return _service.UpdateBoard(board);
         }

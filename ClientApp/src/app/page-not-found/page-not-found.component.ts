@@ -7,11 +7,12 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.css']
 })
-export class PageNotFoundComponent{
+
+export class PageNotFoundComponent {
 
   constructor(private authService: AuthService) { }
 
-  public redirectToLoginPage(){
+  public redirectToLoginPage() {
     this.authService.redirectToLogin();
   }
 }

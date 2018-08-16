@@ -19,12 +19,10 @@ export class TaskDataService {
   }
 
   public deleteTask(taskId: number): void {
-
-   /* const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === taskId);
-
-    if (currentTaskIndex) {
-      this.userDataService.getCachedUser().tasks.splice(currentTaskIndex, 1);
-    }*/
+    /* const currentTaskIndex = this.getAllTasks().findIndex(t => t.id === taskId);
+     if (currentTaskIndex) {
+       this.userDataService.getCachedUser().tasks.splice(currentTaskIndex, 1);
+     }*/
   }
 
   public editTask(editedTask: TaskItem): void {/*
@@ -38,10 +36,9 @@ export class TaskDataService {
     }*/
   }
 
-  public getAllTasks(): Array<TaskItem>
-  {
+  public getAllTasks(): Array<TaskItem> {
     return null;
-  //  return this.userDataService.getCachedUser().tasks;
+    //  return this.userDataService.getCachedUser().tasks;
   }
-  
+
 }
