@@ -23,8 +23,8 @@ li {
   display: inline-block;
 }
 
-#editInput{
-  width: 50%;
+#editInput {
+  width: 200%;
 }
 
 .containing-div {
@@ -32,11 +32,22 @@ li {
 }
 
 .buttons-group-visability {
-  display: none; 
+  display: none;
 }
- .buttons-group-visability :hover{
-   display: inline-block;
-}
- .task-list-container:hover .buttons-group-visability{
+
+.buttons-group-visability :hover {
   display: inline-block;
+}
+
+.task-list-container:hover .buttons-group-visability {
+  display: inline-block;
+}
+
+.mainfiller {
+  display: flex;
+}
+
+.filler {
+  flex-grow: 1;
+  text-align: center;
 }

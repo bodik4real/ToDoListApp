@@ -8,6 +8,10 @@
   margin-top: 40vh;
 }
 
-.task-list-container li:hover .buttons-group-visibility{
+.task-list-container li:hover .buttons-group-visibility {
   display: inline-block;
+}
+
+.task-form {
+  margin-bottom: 20px;
 }
