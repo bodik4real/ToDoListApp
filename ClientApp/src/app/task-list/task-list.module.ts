@@ -6,13 +6,15 @@ import { TaskListComponent } from './task-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDataService } from '../services/user-data.service';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
+import { PipeModule } from '../pipes/pipe.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PipeModule
   ],
   declarations: [
     TaskListComponent,

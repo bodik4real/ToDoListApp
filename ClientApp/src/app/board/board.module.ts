@@ -6,13 +6,15 @@ import { UserDataService } from '../services/user-data.service';
 import { BoardComponent } from './board.component';
 import { BoardItemComponent } from './board-item/board-item.component';
 import { BoardService } from '../services/board.service';
+import { PipeModule } from '../pipes/pipe.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipeModule
   ],
   declarations: [
     BoardComponent,

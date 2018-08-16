@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { BoardModule } from './board/board.module';
 import { JwtInterceptor } from './services/interceptors/jwt-interceptor.service';
 import { ErrorInterceptor } from './services/interceptors/error.interceptor';
+import { PipeModule } from './pipes/pipe.module';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ErrorInterceptor } from './services/interceptors/error.interceptor';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BoardModule,
+    PipeModule,
     ModalModule.forRoot()
   ],
   declarations: [

@@ -14,7 +14,7 @@ export class BoardService {
 
   public getAllBoards(userId: string): Observable<ResponseModeExtended<Array<Board>>> {
     return this.http.get<ResponseModeExtended<Array<Board>>>(
-      Const.BaseUrl + '/board/user-boards/' + userId);
+      Const.BaseUrl + '/board/get-user-boards/' + userId);
   }
 
   public saveBoard(board: Board): Observable<ResponseModeExtended<Board>> {
