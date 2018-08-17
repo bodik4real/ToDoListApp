@@ -28,11 +28,8 @@
         </form>
       </div>
     </div>
-    <div class="error" *ngIf="isRegisterError">
-      {{errorMessage}}
-    </div>
   </div>
-  <div class="row error-message">
-    <div class="alert alert-danger" *ngIf="isLoginError" role="alert"> {{errorMessage}}</div>
+  <div *ngIf="isRegisterError" class="row error-message">
+    <div class="alert alert-danger"  role="alert"> {{errorMessage}}</div>
   </div>
 </div>

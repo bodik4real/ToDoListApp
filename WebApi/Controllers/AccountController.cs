@@ -42,6 +42,7 @@ namespace WebApi.Controllers
         {
             var response = new ResponseModel<JwtAuthModel>();
             var userName = _signInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email)?.UserName;
+            var failedToLoginMessage = "Failed to login with user’s credentials";
 
             try
             {
@@ -55,8 +56,12 @@ namespace WebApi.Controllers
                 }
                 else
                 {
-                    response.ErrorMessage = "Failed to login with user’s credentials";
+                    response.ErrorMessage = failedToLoginMessage;
                 }
+            }
+            catch (ArgumentNullException)
+            {
+                response.ErrorMessage = failedToLoginMessage;
             }
             catch (Exception)
             {
@@ -92,7 +97,7 @@ namespace WebApi.Controllers
                 }
                 else
                 {
-                    response.ErrorMessage = "Failed to create new account";
+                    response.ErrorMessage = "Failed to create new account \n Password should contains lower and upper case letter and non - alphabetic symbols";
                 }
             }
             catch (Exception ex)
