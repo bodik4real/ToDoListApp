@@ -3,7 +3,7 @@
     <div class="mainfiller">
       <div>
         <input id="editInput" *ngIf="isTaskEditing" class="form-control" type="text" [(ngModel)]="task.value">
-        <div class="buttons-align" *ngIf="!isTaskEditing">{{task.id}}:{{task.value | truncateString : 50 }} </div>
+        <div class="buttons-align" *ngIf="!isTaskEditing">- {{task.value | truncateString : 50 }} </div>
       </div>
       <div class="filler"></div>
       <div>
